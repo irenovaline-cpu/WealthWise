@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Retirement — WealthWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f7f4ee;
+    --gold: #c9a84c;
+    --gold-light: #f0d98a;
+    --moss: #2a3d2e;
+    --cream: #fdf9f0;
+    --soft: #e8e3d8;
+    --muted: #7a7060;
+    --rule: #d4cfc6;
+    --accent: #7a3ad4;
+    --accent-light: #f5ebff;
+    --accent-dark: #4a0a8a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);}
+
+  /* HEADER */
+  header{background:var(--ink);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--paper);text-decoration:none;letter-spacing:-0.5px;}
+  .logo span{color:var(--gold);}
+  nav{display:flex;gap:24px;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a:hover,nav a.active{color:var(--gold);}
+  .cta-nav{background:var(--gold)!important;color:var(--ink)!important;padding:7px 16px;border-radius:3px;}
+  @media(max-width:700px){nav{display:none;}}
+
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--paper);border-bottom:1px solid var(--rule);padding:10px 24px;}
+  .bc{max-width:1200px;margin:0 auto;font-size:0.72rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .bc a{color:var(--muted);text-decoration:none;}
+  .bc a:hover{color:var(--accent);}
+  .bc-sep{color:var(--rule);}
+
+  /* HERO */
+  .cat-hero{background:linear-gradient(135deg, #1a0d2e, #3a1a5a);padding:64px 24px 56px;position:relative;overflow:hidden;}
+  .cat-hero::before{content:"🔒";position:absolute;right:-40px;top:-40px;font-size:20rem;opacity:0.04;pointer-events:none;line-height:1;}
+  .cat-hero-inner{max-width:1200px;margin:0 auto;position:relative;}
+  .cat-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .cat-eyebrow::before{content:"";display:block;width:28px;height:2px;background:var(--gold);}
+  .cat-hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:white;line-height:1.1;margin-bottom:14px;letter-spacing:-1px;}
+  .cat-hero h1 em{color:var(--gold);font-style:italic;}
+  .cat-hero p{font-size:1rem;color:rgba(255,255,255,0.65);max-width:580px;line-height:1.75;margin-bottom:32px;font-weight:300;}
+  .cat-stats{display:flex;gap:28px;flex-wrap:wrap;}
+  .cat-stat{border-left:2px solid rgba(201,168,76,0.4);padding-left:14px;}
+  .cat-stat .n{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1;}
+  .cat-stat .l{font-size:0.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;}
+
+  /* LAYOUT */
+  .page-layout{max-width:1200px;margin:0 auto;padding:56px 24px;display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;}
+  @media(max-width:900px){.page-layout{grid-template-columns:1fr;}}
+
+  /* SECTION HEAD */
+  .sec-head{margin-bottom:28px;padding-bottom:12px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .sec-head h2{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;}
+  .sec-head a{font-size:0.78rem;color:var(--accent);text-decoration:none;font-weight:600;}
+
+  /* INTRO */
+  .intro-box{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:40px;font-size:0.95rem;color:var(--accent-dark);line-height:1.75;}
+
+  /* ARTICLE CARDS */
+  .articles-section{margin-bottom:48px;}
+  .arts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:600px){.arts-grid{grid-template-columns:1fr;}}
+  .art-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;}
+  .art-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(0,0,0,0.1);border-color:var(--accent);}
+  .art-card-top{height:72px;background:linear-gradient(135deg, #1a0d2e, #3a1a5a);display:flex;align-items:center;justify-content:space-between;padding:0 18px;}
+  .art-emoji{font-size:1.8rem;}
+  .art-tag{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);padding:3px 10px;border-radius:2px;}
+  .art-card-body{padding:18px;flex:1;display:flex;flex-direction:column;}
+  .art-card-body h3{font-family:"Playfair Display",serif;font-size:0.98rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
+  .art-card-body p{font-size:0.8rem;color:var(--muted);line-height:1.6;flex:1;margin-bottom:14px;}
+  .art-meta{display:flex;justify-content:space-between;align-items:center;}
+  .art-time{font-size:0.7rem;color:var(--muted);}
+  .art-arrow{font-size:0.78rem;font-weight:700;color:var(--accent);}
+
+  /* TIPS */
+  .tips-section{margin-bottom:48px;}
+  .tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.tips-grid{grid-template-columns:1fr;}}
+  .tip-card{background:white;border:1px solid var(--rule);border-radius:10px;padding:22px;display:flex;gap:16px;align-items:flex-start;transition:transform 0.2s,border-color 0.2s;}
+  .tip-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+  .tip-num{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;color:var(--accent);opacity:0.4;line-height:1;flex-shrink:0;}
+  .tip-card h4{font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+  .tip-card p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
+
+  /* CTA BANNER */
+  .cta-banner{background:linear-gradient(135deg, #1a0d2e, #3a1a5a);border-radius:14px;padding:32px;text-align:center;margin-bottom:48px;}
+  .cta-banner h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:white;margin-bottom:8px;}
+  .cta-banner p{font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:22px;}
+  .btn-cta{display:inline-block;background:var(--gold);color:var(--ink);padding:13px 28px;border-radius:5px;font-weight:700;text-decoration:none;font-size:0.9rem;transition:background 0.2s,transform 0.15s;}
+  .btn-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+  /* SIDEBAR */
+  .sidebar{position:sticky;top:84px;}
+  .sb-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+  .sb-head{background:var(--ink);color:var(--gold);padding:10px 16px;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .sb-body{padding:16px;}
+
+  /* TOOLS IN SIDEBAR */
+  .tool-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--soft);text-decoration:none;color:var(--ink);transition:color 0.2s;}
+  .tool-item:last-child{border-bottom:none;padding-bottom:0;}
+  .tool-item:hover h4{color:var(--accent);}
+  .tool-emoji{font-size:1.6rem;flex-shrink:0;}
+  .tool-info h4{font-size:0.85rem;font-weight:700;margin-bottom:2px;}
+  .tool-info p{font-size:0.72rem;color:var(--muted);}
+  .tool-badge{font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--accent-light);color:var(--accent-dark);padding:3px 7px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+
+  /* NEWSLETTER */
+  .sb-nl input{width:100%;padding:10px 12px;border:2px solid var(--soft);border-radius:5px;font-family:"DM Sans",sans-serif;font-size:0.84rem;outline:none;margin-bottom:8px;background:var(--paper);transition:border-color 0.2s;}
+  .sb-nl input:focus{border-color:var(--accent);}
+  .sb-nl button{width:100%;background:var(--ink);color:white;border:none;padding:11px;border-radius:5px;font-family:"DM Sans",sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+  .sb-nl button:hover{background:var(--moss);}
+  .sb-fine{font-size:0.62rem;color:var(--muted);text-align:center;margin-top:8px;}
+
+  /* CATEGORIES NAV */
+  .other-cats{list-style:none;}
+  .other-cats li a{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--soft);text-decoration:none;color:var(--ink);font-size:0.85rem;font-weight:500;transition:color 0.2s;}
+  .other-cats li:last-child a{border-bottom:none;}
+  .other-cats li a:hover{color:var(--accent);}
+  .other-cats li a .cat-emo{font-size:1.2rem;}
+
+  /* AD */
+  .ad-zone{background:var(--paper);border:2px dashed var(--rule);border-radius:8px;padding:20px;text-align:center;margin-bottom:20px;}
+  .ad-zone p{font-size:0.6rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+  .ad-zone strong{display:block;font-size:0.85rem;color:var(--ink);text-transform:none;letter-spacing:0;margin-bottom:3px;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#888;padding:40px 24px 24px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #222;}
+  .footer-logo{font-family:"Playfair Display",serif;font-size:1.3rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .footer-logo span{color:var(--gold);}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-links a{color:#888;text-decoration:none;font-size:0.78rem;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{font-size:0.72rem;text-align:center;}
+
+  /* FADE */
+  .fade{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .fade.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
+    <nav>
+      <a href="investing.html" >Investing</a>
+      <a href="debt-free.html" >Budgeting</a>
+      <a href="real-estate.html" >Real Estate</a>
+      <a href="resources.html">Tools</a>
+      <a href="about.html#contact" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html">Home</a>
+    <span class="bc-sep">›</span>
+    <span>Retirement</span>
+  </div>
+</div>
+
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <div class="cat-eyebrow">Retirement</div>
+    <h1>🔒 <em>Retirement</em></h1>
+    <p>401k, IRA, Roth, and FIRE — retire on your schedule.</p>
+    <div class="cat-stats">
+      <div class="cat-stat"><div class="n">6</div><div class="l">Guides</div></div>
+      <div class="cat-stat"><div class="n">3</div><div class="l">Tools</div></div>
+      <div class="cat-stat"><div class="n">Free</div><div class="l">Always</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-layout">
+<div>
+
+  <div class="intro-box fade">Retirement isn't an age — it's a number. The moment your investments generate enough passive income to cover your expenses, work becomes optional. Whether your goal is retiring at 65 or achieving FIRE at 45, the same principles apply: maximize tax-advantaged accounts, invest consistently, and let compounding do the heavy lifting.</div>
+
+  <div class="articles-section">
+    <div class="sec-head">
+      <h2>📰 All Retirement Guides</h2>
+      <a href="index.html">← Back to Home</a>
+    </div>
+    <div class="arts-grid fade">
+        <a class="art-card" href="#">
+          <div class="art-card-top">
+            <span class="art-emoji">🏦</span>
+            <span class="art-tag">401k</span>
+          </div>
+          <div class="art-card-body">
+            <h3>401k vs Roth IRA vs Traditional IRA: Which Account Should You Use?</h3>
+            <p>The tax implications of each account type can mean hundreds of thousands of dollars over your lifetime. Here's how to choose.</p>
+            <div class="art-meta">
+              <span class="art-time">⏱ 10 min read</span>
+              <span class="art-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" href="#">
+          <div class="art-card-top">
+            <span class="art-emoji">🔥</span>
+            <span class="art-tag">FIRE</span>
+          </div>
+          <div class="art-card-body">
+            <h3>What Is FIRE? Financial Independence, Retire Early Explained</h3>
+            <p>The movement, the math, the criticism, and whether it's actually achievable for normal people.</p>
+            <div class="art-meta">
+              <span class="art-time">⏱ 12 min read</span>
+              <span class="art-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" href="article-dividend-portfolio.html">
+          <div class="art-card-top">
+            <span class="art-emoji">📈</span>
+            <span class="art-tag">Investing</span>
+          </div>
+          <div class="art-card-body">
+            <h3>How to Build a $1,000/Month Dividend Portfolio for Retirement</h3>
+            <p>Dividend investing is one of the most reliable retirement income strategies. Here's the exact blueprint.</p>
+            <div class="art-meta">
+              <span class="art-time">⏱ 12 min read</span>
+              <span class="art-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" href="#">
+          <div class="art-card-top">
+            <span class="art-emoji">🧮</span>
+            <span class="art-tag">Planning</span>
+          </div>
+          <div class="art-card-body">
+            <h3>The 4% Rule: How to Calculate Your Retirement Number</h3>
+            <p>Multiply your annual expenses by 25. That's your retirement number. Here's the math behind it.</p>
+            <div class="art-meta">
+              <span class="art-time">⏱ 8 min read</span>
+              <span class="art-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" href="review-personal-capital.html">
+          <div class="art-card-top">
+            <span class="art-emoji">📊</span>
+            <span class="art-tag">Tools</span>
+          </div>
+          <div class="art-card-body">
+            <h3>Personal Capital Review: The Best Free Retirement Planner</h3>
+            <p>Monte Carlo simulations, fee analysis, and retirement projections — all free. Here's our full review.</p>
+            <div class="art-meta">
+              <span class="art-time">⏱ 7 min read</span>
+              <span class="art-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" href="#">
+          <div class="art-card-top">
+            <span class="art-emoji">⏰</span>
+            <span class="art-tag">Timing</span>
+          </div>
+          <div class="art-card-body">
+            <h3>How Much Should You Have Saved for Retirement by Age?</h3>
+            <p>The benchmarks by age — and what to do if you're behind. It's never too late to catch up.</p>
+            <div class="art-meta">
+              <span class="art-time">⏱ 9 min read</span>
+              <span class="art-arrow">Read →</span>
+            </div>
+          </div>
+        </a></div>
+  </div>
+
+  <div class="tips-section">
+    <div class="sec-head"><h2>💡 Key Retirement Principles</h2></div>
+    <div class="tips-grid fade">
+        <div class="tip-card">
+          <div class="tip-num">01</div>
+          <div>
+            <h4>Maximize Your 401k Match First</h4>
+            <p>Your employer match is a 50–100% instant return on your money. Always contribute at least enough to get the full match — it's free money.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-num">02</div>
+          <div>
+            <h4>Open a Roth IRA if You Qualify</h4>
+            <p>Tax-free growth and tax-free withdrawals in retirement. The Roth IRA is the single most powerful retirement account for most people under 50.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-num">03</div>
+          <div>
+            <h4>Calculate Your FIRE Number</h4>
+            <p>Annual expenses × 25 = your retirement number. If you spend $40,000/year, you need $1,000,000. Knowing this number changes everything.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-num">04</div>
+          <div>
+            <h4>Increase Contributions With Every Raise</h4>
+            <p>Every time you get a raise, increase your retirement contribution by 1%. You won't miss money you never saw, and it accelerates your timeline dramatically.</p>
+          </div>
+        </div></div>
+  </div>
+
+  <div class="cta-banner fade">
+    <h3>Ready to Take Action?</h3>
+    <p>Use our free tools and calculators to put these strategies to work today.</p>
+    <a href="resources.html" class="btn-cta">Explore Free Tools →</a>
+  </div>
+
+</div>
+
+<aside class="sidebar">
+
+  <div class="sb-card">
+    <div class="sb-head">🛠️ Recommended Tools</div>
+    <div class="sb-body">
+        <a class="tool-item" href="review-personal-capital.html">
+          <span class="tool-emoji">📊</span>
+          <div class="tool-info">
+            <h4>Personal Capital</h4>
+            <p>Free retirement planner & tracker</p>
+          </div>
+          <span class="tool-badge">FREE</span>
+        </a>
+        <a class="tool-item" href="review-m1-finance.html">
+          <span class="tool-emoji">💼</span>
+          <div class="tool-info">
+            <h4>M1 Finance</h4>
+            <p>Open a Roth IRA for free</p>
+          </div>
+          <span class="tool-badge">FREE</span>
+        </a>
+        <a class="tool-item" href="resources.html">
+          <span class="tool-emoji">🧮</span>
+          <div class="tool-info">
+            <h4>Compound Calculator</h4>
+            <p>Project your retirement savings</p>
+          </div>
+          <span class="tool-badge">FREE</span>
+        </a></div>
+  </div>
+
+  <div class="ad-zone">
+    <strong>📢 AdSense 300×250</strong>
+    <p>Sidebar ad unit goes here</p>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">📬 Free Newsletter</div>
+    <div class="sb-body sb-nl">
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px;line-height:1.55;">One money tip every Sunday. Free forever.</p>
+      <input type="email" placeholder="your@email.com"/>
+      <button onclick="this.textContent='✓ Subscribed!'">Subscribe Free</button>
+      <p class="sb-fine">6,200+ readers · No spam</p>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">🗂️ All Categories</div>
+    <div class="sb-body">
+      <ul class="other-cats">
+        <li><a href="investing.html"><span class="cat-emo">📈</span> Investing</a></li>
+        <li><a href="debt-free.html"><span class="cat-emo">💳</span> Debt-Free</a></li>
+        <li><a href="real-estate.html"><span class="cat-emo">🏡</span> Real Estate</a></li>
+        <li><a href="retirement.html"><span class="cat-emo">🔒</span> Retirement</a></li>
+      </ul>
+    </div>
+  </div>
+
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a class="footer-logo" href="index.html">Wealth<span>Wise</span></a>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Tools</a>
+        <a href="article-dividend-portfolio.html">Articles</a>
+        <a href="about.html">About</a>
+        <a href="about.html#contact">Contact</a>
+        <a href="about.html#disclosure">Disclosure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 WealthWise. All rights reserved. Based in Nigeria 🇳🇬</div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add("in"); }), {threshold:0.1});
+  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
