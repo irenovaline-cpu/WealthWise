@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Build a $1,000/Month Dividend Portfolio — WealthWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Libre+Franklin:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f7f4ee;
+    --gold: #c9a84c;
+    --gold-light: #f0d98a;
+    --moss: #2a3d2e;
+    --cream: #fdf9f0;
+    --soft: #e8e3d8;
+    --accent: #c1341a;
+    --muted: #7a7060;
+    --rule: #d4cfc6;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Libre Franklin', sans-serif; background: var(--cream); color: var(--ink); }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--paper);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--gold); }
+  nav { display: flex; gap: 28px; }
+  nav a {
+    color: var(--soft);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--gold); }
+  .cta-nav {
+    background: var(--gold) !important;
+    color: var(--ink) !important;
+    padding: 7px 16px;
+    border-radius: 3px;
+  }
+  .burger { display:none; background:none; border:none; color:white; font-size:1.4rem; cursor:pointer; }
+  @media(max-width:700px){ nav{display:none;} .burger{display:block;} }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 24px;
+  }
+  .breadcrumb-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .breadcrumb .sep { color: var(--rule); }
+  .breadcrumb .active { color: var(--ink); font-weight: 500; }
+
+  /* ── ARTICLE HERO ── */
+  .article-hero {
+    background: var(--ink);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 39px, rgba(255,255,255,0.02) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.01) 79px, rgba(255,255,255,0.01) 80px),
+      linear-gradient(160deg, #0d0d0d 50%, #1a2e1e);
+    pointer-events: none;
+  }
+  .article-hero-inner {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 52px;
+  }
+  .article-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .cat-label {
+    background: var(--accent);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+  .cat-issue {
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .article-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .article-hero h1 em { color: var(--gold); font-style: italic; }
+  .article-deck {
+    font-size: 1.05rem;
+    color: #bbb;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 32px;
+    max-width: 580px;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+  }
+  .article-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .author-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--moss));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+  .byline-text { font-size: 0.8rem; }
+  .byline-name { color: var(--paper); font-weight: 600; }
+  .byline-meta { color: #777; margin-top: 2px; }
+  .byline-divider { color: #333; font-size: 0.7rem; }
+  .reading-time {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #888;
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── ARTICLE LAYOUT ── */
+  .article-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 56px;
+    align-items: start;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article-body { min-width: 0; }
+
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: #2a2a2a;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .article-body h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 44px 0 16px;
+    color: var(--ink);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .article-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin: 32px 0 12px;
+    color: var(--ink);
+  }
+
+  .article-body strong { font-weight: 700; color: var(--ink); }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    margin: 36px 0;
+    padding: 28px 28px 28px 24px;
+    border-left: 5px solid var(--gold);
+    background: var(--paper);
+    border-radius: 0 8px 8px 0;
+    position: relative;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    line-height: 1;
+  }
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem !important;
+    font-style: italic;
+    line-height: 1.5 !important;
+    color: var(--ink) !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+  .pull-quote cite {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+    font-style: normal;
+  }
+
+  /* DATA TABLE */
+  .data-table-wrap {
+    margin: 32px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+  .data-table-title {
+    background: var(--ink);
+    color: var(--gold);
+    padding: 12px 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    background: var(--paper);
+    padding: 12px 16px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+  td {
+    padding: 14px 16px;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #f0ece4;
+    color: #2a2a2a;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--cream); }
+  .td-ticker { font-weight: 700; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--ink); }
+  .td-yield { color: var(--moss); font-weight: 600; }
+  .td-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .tag-core { background: #ebf0ff; color: #2a6dd9; }
+  .tag-growth { background: #ebfff5; color: #27a86e; }
+  .tag-income { background: #fff8e1; color: #a07030; }
+
+  /* STEP BOXES */
+  .step-list { margin: 28px 0; display: flex; flex-direction: column; gap: 16px; }
+  .step-box {
+    display: flex;
+    gap: 18px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px;
+    transition: box-shadow 0.2s;
+  }
+  .step-box:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .step-n {
+    width: 36px; height: 36px;
+    background: var(--ink);
+    color: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-box h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; }
+  .step-box p { font-size: 0.85rem !important; color: var(--muted) !important; line-height: 1.6 !important; margin: 0 !important; }
+
+  /* CALCULATOR BOX */
+  .calc-box {
+    background: var(--ink);
+    color: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin: 36px 0;
+  }
+  .calc-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin: 0 0 16px !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #1e1e1e;
+    font-size: 0.88rem;
+  }
+  .calc-row:last-of-type { border-bottom: none; }
+  .calc-label { color: #aaa; }
+  .calc-val { font-weight: 700; color: var(--paper); }
+  .calc-total {
+    background: var(--gold);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+  }
+  .calc-total .big { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; }
+
+  /* CALLOUT */
+  .callout {
+    background: linear-gradient(135deg, #ebfff5, #d4f5e6);
+    border: 1px solid #a0f5c8;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #0a4a28;
+  }
+  .callout strong { display: block; font-size: 0.9rem; margin-bottom: 6px; }
+
+  .warning-callout {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #7a5a00;
+  }
+  .warning-callout strong { display: block; font-size: 0.9rem; margin-bottom: 6px; }
+
+  /* DIVIDER */
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0;
+    color: var(--rule);
+  }
+  .section-rule hr { flex: 1; border: none; border-top: 1px solid var(--rule); }
+  .section-rule span { font-size: 1.2rem; }
+
+  /* ARTICLE FOOTER */
+  .article-tags { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .article-tags h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .tag:hover { background: var(--ink); color: var(--gold); border-color: var(--ink); }
+
+  .author-box {
+    margin-top: 40px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .author-big-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--moss));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+  .author-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+  .author-box .role { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .author-box p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── SIDEBAR ── */
+  .article-sidebar { position: sticky; top: 84px; }
+
+  .sidebar-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .sidebar-card-head {
+    background: var(--ink);
+    color: var(--gold);
+    padding: 10px 16px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .sidebar-card-body { padding: 16px; }
+
+  /* TOC */
+  .toc-list { list-style: none; }
+  .toc-list li { padding: 7px 0; border-bottom: 1px dashed var(--soft); }
+  .toc-list li:last-child { border-bottom: none; }
+  .toc-list a {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    transition: color 0.2s;
+    line-height: 1.4;
+  }
+  .toc-list a:hover { color: var(--gold); }
+  .toc-num { color: var(--gold); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; }
+
+  /* AD ZONE */
+  .sidebar-ad {
+    background: var(--paper);
+    border: 2px dashed var(--rule);
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .sidebar-ad p { font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .sidebar-ad strong { display: block; font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; margin-bottom: 4px; }
+
+  /* AFFILIATE CARD */
+  .aff-sidebar {
+    background: linear-gradient(135deg, var(--ink), #1a2e1e);
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .aff-sidebar .badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+  .aff-sidebar h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: white; margin-bottom: 6px; }
+  .aff-sidebar p { font-size: 0.8rem; color: #aaa; line-height: 1.55; margin-bottom: 14px; }
+  .aff-sidebar .earn { font-size: 0.72rem; color: var(--gold); font-weight: 600; margin-bottom: 12px; display: block; }
+  .aff-sidebar a {
+    display: block;
+    background: var(--gold);
+    color: var(--ink);
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .aff-sidebar a:hover { background: var(--gold-light); }
+
+  /* NEWSLETTER SIDEBAR */
+  .nl-sidebar { background: var(--paper); }
+  .nl-sidebar input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.84rem;
+    margin-bottom: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .nl-sidebar input:focus { border-color: var(--gold); }
+  .nl-sidebar button {
+    width: 100%;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nl-sidebar button:hover { background: var(--moss); }
+  .nl-sidebar .fine { font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 8px; }
+
+  /* RELATED */
+  .related-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--soft);
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .related-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .related-item:hover h5 { color: var(--gold); }
+  .related-thumb {
+    width: 52px; height: 52px;
+    border-radius: 6px;
+    background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .related-item h5 { font-size: 0.82rem; font-weight: 600; line-height: 1.35; margin-bottom: 3px; }
+  .related-item span { font-size: 0.72rem; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: #888;
+    padding: 48px 24px 24px;
+    margin-top: 0;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .logo { display: block; margin-bottom: 12px; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.65; max-width: 260px; }
+  footer h4 { font-family: 'Cormorant Garamond', serif; color: var(--paper); font-size: 1rem; margin-bottom: 14px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 7px; }
+  footer ul li a { color: #888; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-bottom a { color: #555; text-decoration: none; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  /* ── AD BANNER ── */
+  .ad-banner {
+    background: linear-gradient(135deg, var(--moss), #1a2e1e);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+  }
+  .ad-banner strong { color: var(--gold-light); }
+  .ad-banner a { color: var(--gold-light); text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .article-layout { grid-template-columns: 1fr; }
+    .article-sidebar { position: static; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media(max-width:600px){
+    .article-hero h1 { font-size: 1.9rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .author-box { flex-direction: column; }
+  }
+
+  /* READING PROGRESS BAR */
+  #read-progress {
+    position: fixed;
+    top: 67px;
+    left: 0;
+    height: 3px;
+    background: var(--gold);
+    width: 0%;
+    z-index: 200;
+    transition: width 0.1s linear;
+  }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div id="read-progress"></div>
+
+<!-- AD BANNER -->
+<div class="ad-banner">
+  💡 <strong>Sponsored:</strong> Earn up to 5.1% APY — <a href="#">Open a High-Yield Savings Account free today →</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
+    <nav>
+      <a href="#">Investing</a>
+      <a href="#">Budgeting</a>
+      <a href="#">Side Hustles</a>
+      <a href="#">Tools</a>
+      <a href="#newsletter" class="cta-nav">Free Newsletter</a>
+    </nav>
+    <button class="burger">☰</button>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="#">Investing</a>
+    <span class="sep">›</span>
+    <span class="active">Dividend Portfolio Guide</span>
+  </div>
+</div>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <div class="hero-bg"></div>
+  <div class="article-hero-inner">
+    <div class="article-category">
+      <span class="cat-label">Investing</span>
+      <span class="cat-issue">Vol. 1 · Issue 3</span>
+    </div>
+    <h1>How to Build a <em>$1,000/Month</em><br/>Dividend Portfolio From Scratch</h1>
+    <p class="article-deck">You don't need $500,000 to live off dividends. Here's the exact blueprint — the stocks, the timeline, and the reinvestment math — starting with just $500.</p>
+    <div class="article-byline">
+      <div class="author-avatar">W</div>
+      <div class="byline-text">
+        <div class="byline-name">WealthWise Editorial</div>
+        <div class="byline-meta">February 2025 · Updated Monthly</div>
+      </div>
+      <span class="byline-divider">|</span>
+      <span class="reading-time">⏱ 12 min read</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE LAYOUT -->
+<div class="article-layout">
+
+  <!-- MAIN CONTENT -->
+  <article class="article-body">
+
+    <p>Most people think dividend investing is something you do <strong>after</strong> you're already rich. You need a million dollars in the market before the income gets interesting, right? Wrong. With the right stocks, a focused reinvestment strategy, and patience measured in years rather than decades, you can build a portfolio that throws off $1,000 every single month — starting from almost nothing.</p>
+
+    <p>This guide shows you exactly how. We're not talking about theory. We're talking about specific stocks, a specific starting amount, and a specific reinvestment plan that compounds your income over time.</p>
+
+    <div class="pull-quote">
+      <p>The best time to start a dividend portfolio was ten years ago. The second best time is today.</p>
+      <cite>— WealthWise Investing Philosophy</cite>
+    </div>
+
+    <h2 id="s1">What Is Dividend Investing?</h2>
+
+    <p>When you own shares of a company, some companies pay you a portion of their profits on a regular schedule — usually quarterly. This payment is called a <strong>dividend</strong>. Dividend investing means building a portfolio specifically designed to maximize this income stream.</p>
+
+    <p>Unlike selling stocks for a profit (which requires market timing), dividends arrive whether the market is up or down. A company like Johnson & Johnson has raised its dividend every single year for over 60 consecutive years — through recessions, pandemics, and market crashes.</p>
+
+    <div class="step-list fade-in">
+      <div class="step-box">
+        <div class="step-n">1</div>
+        <div>
+          <h4>Dividend Yield</h4>
+          <p>The annual dividend payment divided by the share price. A $100 stock paying $4/year has a 4% yield. This is your "interest rate" from owning the stock.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">2</div>
+        <div>
+          <h4>Dividend Growth Rate</h4>
+          <p>How much the company increases its dividend each year. A 7% grower doubles its payout every 10 years — without you buying more shares.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">3</div>
+        <div>
+          <h4>DRIP (Dividend Reinvestment)</h4>
+          <p>Automatically reinvesting your dividends to buy more shares. This is the engine of compounding — the single most powerful move a beginner investor can make.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-rule"><hr/><span>✦</span><hr/></div>
+
+    <h2 id="s2">How Much Do You Need to Earn $1,000/Month?</h2>
+
+    <p>Let's do the math honestly. To earn $1,000/month ($12,000/year) purely from dividends at a 4% average yield, you'd need a portfolio worth approximately <strong>$300,000</strong>. That sounds impossible at first — until you factor in reinvestment.</p>
+
+    <div class="calc-box fade-in">
+      <h3>🧮 Dividend Portfolio Calculator</h3>
+      <div class="calc-row"><span class="calc-label">Starting Investment</span><span class="calc-val">$500/month contribution</span></div>
+      <div class="calc-row"><span class="calc-label">Average Dividend Yield</span><span class="calc-val">4.2%</span></div>
+      <div class="calc-row"><span class="calc-label">Dividend Growth Rate</span><span class="calc-val">6% per year</span></div>
+      <div class="calc-row"><span class="calc-label">Stock Price Appreciation</span><span class="calc-val">5% per year</span></div>
+      <div class="calc-row"><span class="calc-label">DRIP Reinvestment</span><span class="calc-val">Yes (100%)</span></div>
+      <div class="calc-row"><span class="calc-label">Time Horizon</span><span class="calc-val">15 years</span></div>
+      <div class="calc-total">
+        <span>Monthly Dividend Income</span>
+        <span class="big">$1,047/mo</span>
+      </div>
+    </div>
+
+    <p>Contributing $500 per month — roughly $16/day, or the cost of skipping a few coffees and lunches — and reinvesting every dividend, you can reach $1,000/month in passive income within 15 years. And that assumes no increases in your contribution over time, no raises, no windfalls.</p>
+
+    <div class="callout fade-in">
+      <strong>✅ The Accelerator:</strong>
+      Every time you increase your monthly contribution — even by $50 — you shave months off your timeline. At $750/month, you reach the goal in roughly 12 years instead of 15.
+    </div>
+
+    <div class="section-rule"><hr/><span>✦</span><hr/></div>
+
+    <h2 id="s3">The 7 Stocks We'd Build Around</h2>
+
+    <p>Not all dividend stocks are created equal. We look for three things: a yield above 3%, a track record of consecutive dividend increases, and a business model that doesn't depend on a booming economy. Here's the core portfolio:</p>
+
+    <div class="data-table-wrap fade-in">
+      <div class="data-table-title">📊 WealthWise Core Dividend Portfolio — 2025</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th>Yield</th>
+            <th>Div. Growth</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-ticker">JNJ</td>
+            <td>Johnson & Johnson</td>
+            <td class="td-yield">3.1%</td>
+            <td>6% / yr</td>
+            <td><span class="td-tag tag-core">Core</span></td>
+          </tr>
+          <tr>
+            <td class="td-ticker">ABBV</td>
+            <td>AbbVie</td>
+            <td class="td-yield">4.8%</td>
+            <td>9% / yr</td>
+            <td><span class="td-tag tag-income">Income</span></td>
+          </tr>
+          <tr>
+            <td class="td-ticker">PG</td>
+            <td>Procter & Gamble</td>
+            <td class="td-yield">2.4%</td>
+            <td>5% / yr</td>
+            <td><span class="td-tag tag-core">Core</span></td>
+          </tr>
+          <tr>
+            <td class="td-ticker">O</td>
+            <td>Realty Income Corp</td>
+            <td class="td-yield">5.6%</td>
+            <td>4% / yr</td>
+            <td><span class="td-tag tag-income">Income</span></td>
+          </tr>
+          <tr>
+            <td class="td-ticker">VYM</td>
+            <td>Vanguard High Div. ETF</td>
+            <td class="td-yield">3.2%</td>
+            <td>7% / yr</td>
+            <td><span class="td-tag tag-growth">Growth</span></td>
+          </tr>
+          <tr>
+            <td class="td-ticker">KO</td>
+            <td>Coca-Cola</td>
+            <td class="td-yield">3.0%</td>
+            <td>4% / yr</td>
+            <td><span class="td-tag tag-core">Core</span></td>
+          </tr>
+          <tr>
+            <td class="td-ticker">SCHD</td>
+            <td>Schwab US Dividend ETF</td>
+            <td class="td-yield">3.5%</td>
+            <td>11% / yr</td>
+            <td><span class="td-tag tag-growth">Growth</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Notice the mix: some are pure income plays (Realty Income pays dividends <em>monthly</em>), some are growth plays (SCHD has grown its dividend over 11% annually), and some are stability anchors (Coca-Cola has paid uninterrupted dividends since 1893).</p>
+
+    <div class="warning-callout fade-in">
+      <strong>⚠️ Important Disclaimer:</strong>
+      This is not personalized financial advice. These stocks are examples for educational purposes only. Always do your own research or consult a licensed financial advisor before investing. Past dividend history does not guarantee future payments.
+    </div>
+
+    <div class="section-rule"><hr/><span>✦</span><hr/></div>
+
+    <h2 id="s4">How to Start With $500 (Step by Step)</h2>
+
+    <p>You don't need to buy all seven stocks at once. Here's a practical beginner approach that gets you invested quickly, diversified from day one, and building the habit of regular contributions.</p>
+
+    <div class="step-list fade-in">
+      <div class="step-box">
+        <div class="step-n">1</div>
+        <div>
+          <h4>Open a Brokerage Account (Free)</h4>
+          <p>Use M1 Finance — it's completely free, allows fractional shares (so you can own $50 of a $200 stock), and has automatic DRIP built in. Takes about 10 minutes on your phone.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">2</div>
+        <div>
+          <h4>Deposit Your First $500</h4>
+          <p>Link your bank account and transfer $500. It typically takes 1–3 business days to clear. Don't wait for the "perfect" time — the best time to invest is as soon as possible.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">3</div>
+        <div>
+          <h4>Build a "Pie" With 3 Core Holdings</h4>
+          <p>Start simple. Allocate: 40% to SCHD, 30% to VYM, 30% to Realty Income (O). This gives you instant diversification across hundreds of companies with just three holdings.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">4</div>
+        <div>
+          <h4>Turn On DRIP Reinvestment</h4>
+          <p>In M1 Finance, enable automatic reinvestment. Every dividend you receive immediately buys more shares. This is the compounding engine that turns small contributions into real income over time.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">5</div>
+        <div>
+          <h4>Set a Monthly Auto-Deposit</h4>
+          <p>Set up a recurring transfer of whatever you can afford — even $100/month makes a difference. Automate it so you never have to think about it. Treat it like a bill you pay yourself.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote fade-in">
+      <p>Investing $500/month starting at age 30 with DRIP reinvestment produces more wealth than investing $1,000/month starting at age 40.</p>
+      <cite>— The Power of Starting Early</cite>
+    </div>
+
+    <div class="section-rule"><hr/><span>✦</span><hr/></div>
+
+    <h2 id="s5">Common Mistakes to Avoid</h2>
+
+    <p>Dividend investing is simple, but not easy. The biggest mistakes beginners make have nothing to do with stock selection — they're behavioral. Here's what to watch out for:</p>
+
+    <p><strong>Chasing high yields.</strong> A 12% dividend yield sounds incredible until you realize the stock has dropped 50% in price and the dividend is about to be cut. Sustainable yields are typically 2%–6%. Anything higher deserves serious scrutiny.</p>
+
+    <p><strong>Selling during a dip.</strong> When the market drops, your portfolio value falls but your dividend income often doesn't. A company paying $4/share in dividends will likely keep paying $4/share even if the stock price drops from $100 to $80. Stay the course and keep reinvesting.</p>
+
+    <p><strong>Ignoring taxes.</strong> Dividends are taxable income. Qualified dividends are taxed at the capital gains rate (0%–20% depending on your income), which is favorable. Holding dividend stocks inside a Roth IRA eliminates taxes on this income entirely — a major advantage to explore.</p>
+
+    <div class="callout fade-in">
+      <strong>💡 Pro Tip — Use a Roth IRA:</strong>
+      If you're eligible, hold your dividend portfolio inside a Roth IRA. Your contributions grow tax-free, and all dividend income and withdrawals in retirement are completely tax-free. This alone can add hundreds of thousands of dollars to your lifetime results.
+    </div>
+
+    <!-- TAGS -->
+    <div class="article-tags fade-in">
+      <h4>Filed Under</h4>
+      <div class="tags">
+        <a href="#" class="tag">Dividend Investing</a>
+        <a href="#" class="tag">Passive Income</a>
+        <a href="#" class="tag">Stock Market</a>
+        <a href="#" class="tag">Beginner Investing</a>
+        <a href="#" class="tag">DRIP</a>
+        <a href="#" class="tag">Financial Freedom</a>
+      </div>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box fade-in">
+      <div class="author-big-avatar">W</div>
+      <div>
+        <h4>WealthWise Editorial Team</h4>
+        <div class="role">Personal Finance Writers</div>
+        <p>We research, simplify, and explain personal finance concepts so anyone — regardless of background or income — can make smarter money decisions. Every article is reviewed for accuracy before publishing.</p>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="article-sidebar">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-head">📋 Table of Contents</div>
+      <div class="sidebar-card-body">
+        <ul class="toc-list">
+          <li><a href="#s1"><span class="toc-num">01</span> What Is Dividend Investing?</a></li>
+          <li><a href="#s2"><span class="toc-num">02</span> How Much Do You Need?</a></li>
+          <li><a href="#s3"><span class="toc-num">03</span> The 7 Stocks to Build Around</a></li>
+          <li><a href="#s4"><span class="toc-num">04</span> How to Start With $500</a></li>
+          <li><a href="#s5"><span class="toc-num">05</span> Mistakes to Avoid</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AD ZONE -->
+    <div class="sidebar-ad">
+      <strong>📢 Ad Placement</strong>
+      <p>Google AdSense 300×250 sidebar unit goes here</p>
+    </div>
+
+    <!-- AFFILIATE CARD -->
+    <div class="aff-sidebar">
+      <span class="badge">⭐ Recommended Tool</span>
+      <h4>M1 Finance</h4>
+      <p>Free investing platform with automatic dividend reinvestment, fractional shares, and no commissions. Perfect for building this exact portfolio.</p>
+      <span class="earn">You earn: $30–$50 per signup</span>
+      <a href="#">Open Free Account →</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="sidebar-card" id="newsletter">
+      <div class="sidebar-card-head">📬 Weekly Money Tips</div>
+      <div class="sidebar-card-body nl-sidebar">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px;line-height:1.55;">Join 6,200+ readers getting one actionable money tip every Sunday.</p>
+        <input type="email" placeholder="Your email address"/>
+        <button onclick="this.textContent='✓ Subscribed!'">Subscribe Free</button>
+        <p class="fine">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+
+    <!-- RELATED ARTICLES -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-head">📰 Related Articles</div>
+      <div class="sidebar-card-body">
+        <a class="related-item" href="#">
+          <div class="related-thumb">📊</div>
+          <div>
+            <h5>The 50/30/20 Rule: Does It Still Work in 2025?</h5>
+            <span>8 min read</span>
+          </div>
+        </a>
+        <a class="related-item" href="#">
+          <div class="related-thumb">🏦</div>
+          <div>
+            <h5>7 High-Yield Savings Accounts Paying 5%+</h5>
+            <span>6 min read</span>
+          </div>
+        </a>
+        <a class="related-item" href="#">
+          <div class="related-thumb">🚀</div>
+          <div>
+            <h5>10 Passive Income Streams to Start This Weekend</h5>
+            <span>10 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">Wealth<span style="color:var(--gold)">Wise</span></a>
+        <p>Honest, independent personal finance content for people who want to build real wealth — not just read about it.</p>
+      </div>
+      <div>
+        <h4>Topics</h4>
+        <ul>
+          <li><a href="#">Investing</a></li>
+          <li><a href="#">Budgeting</a></li>
+          <li><a href="#">Side Hustles</a></li>
+          <li><a href="#">Retirement</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Free Templates</a></li>
+          <li><a href="#">Calculators</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Glossary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Disclosure</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 WealthWise. All rights reserved.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Affiliate Disclosure</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    document.getElementById('read-progress').style.width = (scrolled / total * 100) + '%';
+  });
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
