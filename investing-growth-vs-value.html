@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Growth vs Value Stocks: Which Investment Style Is Right for You? — WealthWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{--ink:#0d0d0d;--paper:#f7f4ee;--gold:#c9a84c;--gold-light:#f0d98a;--moss:#2a3d2e;--cream:#fdf9f0;--soft:#e8e3d8;--muted:#7a7060;--rule:#d4cfc6;--accent:#1a4fd4;--accent-light:#ebf0ff;}
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);}
+
+  header{background:var(--ink);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .logo span{color:var(--gold);}
+  nav{display:flex;gap:24px;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a:hover{color:var(--gold);}
+  .cta-nav{background:var(--gold)!important;color:var(--ink)!important;padding:7px 16px;border-radius:3px;}
+  @media(max-width:700px){nav{display:none;}}
+
+  /* PROGRESS BAR */
+  .progress-bar{position:fixed;top:67px;left:0;height:3px;background:var(--gold);width:0%;z-index:99;transition:width 0.1s;}
+
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--paper);border-bottom:1px solid var(--rule);padding:10px 24px;}
+  .bc{max-width:860px;margin:0 auto;font-size:0.72rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .bc a{color:var(--muted);text-decoration:none;} .bc a:hover{color:var(--accent);}
+  .bc-sep{color:var(--rule);}
+
+  /* ARTICLE HERO */
+  .art-hero{background:linear-gradient(135deg,#0d1a3a,#1a3a7a);padding:52px 24px 44px;}
+  .art-hero-inner{max-width:860px;margin:0 auto;}
+  .art-tag-badge{display:inline-block;background:var(--accent);color:white;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:14px;}
+  .art-hero h1{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:white;line-height:1.2;margin-bottom:12px;letter-spacing:-0.5px;}
+  .art-hero .subtitle{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:22px;font-weight:300;font-family:"Lora",serif;font-style:italic;}
+  .art-meta-bar{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+  .art-meta-bar span{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.5px;}
+  .art-meta-bar strong{color:var(--gold);}
+
+  /* MAIN LAYOUT */
+  .art-layout{max-width:860px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:start;}
+  @media(max-width:800px){.art-layout{grid-template-columns:1fr;}}
+
+  /* ARTICLE BODY */
+  .art-intro{font-family:"Lora",serif;font-size:1.05rem;line-height:1.85;color:#333;margin-bottom:36px;padding:20px 24px;background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;}
+  .article-section{margin-bottom:36px;}
+  .article-section h2{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:900;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+  .article-section p{font-family:"Lora",serif;font-size:0.97rem;line-height:1.85;color:#2a2a2a;margin-bottom:14px;}
+
+  /* ARTICLE NAV */
+  .art-nav{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:24px;border-top:2px solid var(--rule);flex-wrap:wrap;}
+  .nav-btn{font-size:0.78rem;font-weight:700;text-decoration:none;color:var(--muted);padding:10px 16px;border:1px solid var(--rule);border-radius:5px;transition:all 0.2s;max-width:280px;line-height:1.4;}
+  .nav-btn:hover{background:var(--ink);color:var(--gold);border-color:var(--ink);}
+
+  /* BACK TO LIST */
+  .back-list{display:block;text-align:center;margin-top:24px;}
+  .back-list a{font-size:0.78rem;color:var(--accent);text-decoration:none;font-weight:700;}
+
+  /* SIDEBAR */
+  .sidebar{position:sticky;top:84px;}
+  .sb-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:18px;}
+  .sb-head{background:var(--ink);color:var(--gold);padding:10px 16px;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .sb-body{padding:16px;}
+  .toc-link{display:block;font-size:0.8rem;color:var(--muted);text-decoration:none;padding:7px 0;border-bottom:1px solid var(--soft);transition:color 0.2s;display:flex;gap:8px;align-items:center;}
+  .toc-link:last-child{border-bottom:none;}
+  .toc-link:hover{color:var(--accent);}
+  .toc-num{font-family:"Playfair Display",serif;font-size:0.9rem;font-weight:900;color:var(--accent);opacity:0.5;width:18px;flex-shrink:0;}
+  .sb-cta{display:block;background:var(--gold);color:var(--ink);text-align:center;padding:12px;border-radius:6px;font-weight:700;font-size:0.85rem;text-decoration:none;margin-bottom:10px;transition:background 0.2s;}
+  .sb-cta:hover{background:var(--gold-light);}
+  .ad-zone{background:var(--paper);border:2px dashed var(--rule);border-radius:8px;padding:18px;text-align:center;margin-bottom:18px;}
+  .ad-zone strong{display:block;font-size:0.82rem;color:var(--ink);margin-bottom:3px;}
+  .ad-zone p{font-size:0.58rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+
+  footer{background:var(--ink);color:#888;padding:36px 24px 20px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #222;}
+  .footer-logo{font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .footer-logo span{color:var(--gold);}
+  .footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .footer-links a{color:#888;text-decoration:none;font-size:0.75rem;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{font-size:0.7rem;text-align:center;}
+
+  .fade{opacity:0;transform:translateY(14px);transition:opacity 0.45s ease,transform 0.45s ease;}
+  .fade.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
+    <nav>
+      <a href="investing.html" class="active">Investing</a>
+      <a href="debt-free.html">Debt-Free</a>
+      <a href="resources.html">Tools</a>
+      <a href="all-reads.html">All Reads</a>
+      <a href="about.html#contact" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html">Home</a><span class="bc-sep">›</span>
+    <a href="all-reads.html">All Reads</a><span class="bc-sep">›</span>
+    <a href="investing.html">Investing</a><span class="bc-sep">›</span>
+    <span>Growth vs Value Stocks: Which Investment Style Is ...</span>
+  </div>
+</div>
+
+<div class="art-hero">
+  <div class="art-hero-inner">
+    <div class="art-tag-badge">📈 Advanced</div>
+    <h1>Growth vs Value Stocks: Which Investment Style Is Right for You?</h1>
+    <p class="subtitle">Understand the two dominant investing philosophies and how to combine them for maximum returns.</p>
+    <div class="art-meta-bar">
+      <span>⏱ <strong>12 min read</strong></span>
+      <span>· By <strong>WealthWise Team</strong></span>
+      <span>· February 2025</span>
+      <span>· <strong>Free</strong></span>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+<div>
+  <div class="art-intro fade">Every stock in the market can be broadly categorized as either a growth stock or a value stock. These aren't just labels — they represent fundamentally different investment philosophies with different risk profiles, return patterns, and timelines. Understanding both will make you a sharper investor.</div>
+  
+    <div class="article-section fade">
+      <h2>What Are Growth Stocks?</h2>
+      <p>Growth stocks are companies expected to grow revenues and earnings significantly faster than the average company. They typically reinvest all profits back into expansion rather than paying dividends. Think Amazon, Netflix, Nvidia, Tesla — companies prioritizing market share and innovation over immediate profitability.</p><p>Growth stocks trade at high valuations (high price-to-earnings ratios) because investors are paying for future potential, not current earnings. A company earning $1/share but growing 40% annually might trade at $80/share (80x earnings) because investors expect it to earn $10/share in 5 years.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>What Are Value Stocks?</h2>
+      <p>Value stocks are companies trading below their intrinsic worth — typically because they're in cyclical industries, have had recent bad news, or are simply overlooked by the market. The classic value investing approach, popularized by Warren Buffett and Benjamin Graham, is to buy $1 of value for $0.70.</p><p>Value stocks typically have low price-to-earnings ratios, high dividend yields, and established businesses with predictable cash flows. Banks, energy companies, consumer staples, and industrial companies often fall into the value category. They're boring — which is precisely the point.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>Historical Performance: Who Wins?</h2>
+      <p>Over very long periods (50+ years), value stocks have historically outperformed growth stocks — a phenomenon called the value premium, documented by Eugene Fama and Kenneth French. Value stocks' outperformance is attributed to their higher risk (investors demand higher returns for owning distressed or cyclical companies).</p><p>However, the 2010s were a decade of growth stock dominance. Tech companies like Apple, Amazon, and Google generated returns that crushed value indexes. Since 2022, with rising interest rates, value stocks have regained relative performance. Neither style wins every decade.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>How to Combine Both Styles</h2>
+      <p>Most sophisticated investors don't choose exclusively. They tilt their portfolio toward their preferred style while maintaining exposure to both. A simple blended approach: 60% in a total market ETF (VTI) for automatic blend, 20% in a growth ETF (VUG), and 20% in a value ETF (VTV).</p><p>For dividend investors, value stocks naturally dominate portfolios (high yielders are typically value stocks). For younger investors with long timelines, a growth tilt makes sense since you have time to ride out volatility. As you approach retirement, shifting toward value and dividend stocks provides income and reduces drawdown risk.</p>
+    </div>
+
+  <div class="art-nav">
+    <a href="investing-dollar-cost-averaging.html" class="nav-btn nav-prev">← Dollar-Cost Averaging: Why Investing the...</a>
+    <a href="investing-rule-of-72.html" class="nav-btn nav-next">The Rule of 72: The Mental Math Trick Ev... →</a>
+  </div>
+  <div class="back-list"><a href="all-reads.html#sec-invest">← Back to All Investing Guides</a></div>
+</div>
+
+<aside class="sidebar">
+  <div class="sb-card">
+    <div class="sb-head">📋 In This Article</div>
+    <div class="sb-body">
+      <a class="toc-link" href="#"><span class="toc-num">01</span>What Are Growth Stocks?</a><a class="toc-link" href="#"><span class="toc-num">02</span>What Are Value Stocks?</a><a class="toc-link" href="#"><span class="toc-num">03</span>Historical Performance: Who Wins?</a><a class="toc-link" href="#"><span class="toc-num">04</span>How to Combine Both Styles</a>
+    </div>
+  </div>
+
+  <div class="ad-zone">
+    <strong>📢 AdSense 300×250</strong>
+    <p>Sidebar ad unit</p>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">💼 Recommended Tool</div>
+    <div class="sb-body">
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;line-height:1.55;">Start investing with M1 Finance — free, automatic DRIP, fractional shares.</p>
+      <a href="review-m1-finance.html" class="sb-cta">Open Free Account →</a>
+      <p style="font-size:0.62rem;color:var(--muted);text-align:center;">Affiliate link · No extra cost to you</p>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">📚 More Investing Guides</div>
+    <div class="sb-body">
+      <a class="toc-link" href="investing-dividend-portfolio.html"><span class="toc-num">💰</span>How to Build a $1,000/Month Dividend P...</a><a class="toc-link" href="investing-index-vs-etf.html"><span class="toc-num">📊</span>Index Funds vs ETFs: What's the Differ...</a><a class="toc-link" href="investing-3-fund-portfolio.html"><span class="toc-num">🎯</span>The 3-Fund Portfolio: The Simplest Inv...</a><a class="toc-link" href="investing-market-crash.html"><span class="toc-num">📉</span>What to Do When the Stock Market Crash...</a><a class="toc-link" href="investing-acorns-review.html"><span class="toc-num">🪙</span>Can Acorns Round-Ups Really Build Weal...</a>
+      <a class="toc-link" href="all-reads.html#sec-invest" style="color:var(--accent);font-weight:700;"><span class="toc-num">→</span>See all 14 guides</a>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a class="footer-logo" href="index.html">Wealth<span>Wise</span></a>
+      <div class="footer-links">
+        <a href="all-reads.html">All Reads</a>
+        <a href="investing.html">Investing</a>
+        <a href="resources.html">Tools</a>
+        <a href="about.html">About</a>
+        <a href="about.html#disclosure">Disclosure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 WealthWise · Nigeria 🇳🇬 · <a href="about.html#disclosure" style="color:#555;">Affiliate Disclosure</a></div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById("progressBar").style.width = pct + "%";
+  });
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add("in"); }), {threshold:0.08});
+  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Rule of 72: The Mental Math Trick Every Investor Should Know — WealthWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{--ink:#0d0d0d;--paper:#f7f4ee;--gold:#c9a84c;--gold-light:#f0d98a;--moss:#2a3d2e;--cream:#fdf9f0;--soft:#e8e3d8;--muted:#7a7060;--rule:#d4cfc6;--accent:#1a4fd4;--accent-light:#ebf0ff;}
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);}
+
+  header{background:var(--ink);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .logo span{color:var(--gold);}
+  nav{display:flex;gap:24px;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a:hover{color:var(--gold);}
+  .cta-nav{background:var(--gold)!important;color:var(--ink)!important;padding:7px 16px;border-radius:3px;}
+  @media(max-width:700px){nav{display:none;}}
+
+  /* PROGRESS BAR */
+  .progress-bar{position:fixed;top:67px;left:0;height:3px;background:var(--gold);width:0%;z-index:99;transition:width 0.1s;}
+
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--paper);border-bottom:1px solid var(--rule);padding:10px 24px;}
+  .bc{max-width:860px;margin:0 auto;font-size:0.72rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .bc a{color:var(--muted);text-decoration:none;} .bc a:hover{color:var(--accent);}
+  .bc-sep{color:var(--rule);}
+
+  /* ARTICLE HERO */
+  .art-hero{background:linear-gradient(135deg,#0d1a3a,#1a3a7a);padding:52px 24px 44px;}
+  .art-hero-inner{max-width:860px;margin:0 auto;}
+  .art-tag-badge{display:inline-block;background:var(--accent);color:white;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:14px;}
+  .art-hero h1{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:white;line-height:1.2;margin-bottom:12px;letter-spacing:-0.5px;}
+  .art-hero .subtitle{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:22px;font-weight:300;font-family:"Lora",serif;font-style:italic;}
+  .art-meta-bar{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+  .art-meta-bar span{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.5px;}
+  .art-meta-bar strong{color:var(--gold);}
+
+  /* MAIN LAYOUT */
+  .art-layout{max-width:860px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:start;}
+  @media(max-width:800px){.art-layout{grid-template-columns:1fr;}}
+
+  /* ARTICLE BODY */
+  .art-intro{font-family:"Lora",serif;font-size:1.05rem;line-height:1.85;color:#333;margin-bottom:36px;padding:20px 24px;background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;}
+  .article-section{margin-bottom:36px;}
+  .article-section h2{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:900;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+  .article-section p{font-family:"Lora",serif;font-size:0.97rem;line-height:1.85;color:#2a2a2a;margin-bottom:14px;}
+
+  /* ARTICLE NAV */
+  .art-nav{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:24px;border-top:2px solid var(--rule);flex-wrap:wrap;}
+  .nav-btn{font-size:0.78rem;font-weight:700;text-decoration:none;color:var(--muted);padding:10px 16px;border:1px solid var(--rule);border-radius:5px;transition:all 0.2s;max-width:280px;line-height:1.4;}
+  .nav-btn:hover{background:var(--ink);color:var(--gold);border-color:var(--ink);}
+
+  /* BACK TO LIST */
+  .back-list{display:block;text-align:center;margin-top:24px;}
+  .back-list a{font-size:0.78rem;color:var(--accent);text-decoration:none;font-weight:700;}
+
+  /* SIDEBAR */
+  .sidebar{position:sticky;top:84px;}
+  .sb-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:18px;}
+  .sb-head{background:var(--ink);color:var(--gold);padding:10px 16px;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .sb-body{padding:16px;}
+  .toc-link{display:block;font-size:0.8rem;color:var(--muted);text-decoration:none;padding:7px 0;border-bottom:1px solid var(--soft);transition:color 0.2s;display:flex;gap:8px;align-items:center;}
+  .toc-link:last-child{border-bottom:none;}
+  .toc-link:hover{color:var(--accent);}
+  .toc-num{font-family:"Playfair Display",serif;font-size:0.9rem;font-weight:900;color:var(--accent);opacity:0.5;width:18px;flex-shrink:0;}
+  .sb-cta{display:block;background:var(--gold);color:var(--ink);text-align:center;padding:12px;border-radius:6px;font-weight:700;font-size:0.85rem;text-decoration:none;margin-bottom:10px;transition:background 0.2s;}
+  .sb-cta:hover{background:var(--gold-light);}
+  .ad-zone{background:var(--paper);border:2px dashed var(--rule);border-radius:8px;padding:18px;text-align:center;margin-bottom:18px;}
+  .ad-zone strong{display:block;font-size:0.82rem;color:var(--ink);margin-bottom:3px;}
+  .ad-zone p{font-size:0.58rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+
+  footer{background:var(--ink);color:#888;padding:36px 24px 20px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #222;}
+  .footer-logo{font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .footer-logo span{color:var(--gold);}
+  .footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .footer-links a{color:#888;text-decoration:none;font-size:0.75rem;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{font-size:0.7rem;text-align:center;}
+
+  .fade{opacity:0;transform:translateY(14px);transition:opacity 0.45s ease,transform 0.45s ease;}
+  .fade.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
+    <nav>
+      <a href="investing.html" class="active">Investing</a>
+      <a href="debt-free.html">Debt-Free</a>
+      <a href="resources.html">Tools</a>
+      <a href="all-reads.html">All Reads</a>
+      <a href="about.html#contact" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html">Home</a><span class="bc-sep">›</span>
+    <a href="all-reads.html">All Reads</a><span class="bc-sep">›</span>
+    <a href="investing.html">Investing</a><span class="bc-sep">›</span>
+    <span>The Rule of 72: The Mental Math Trick Every Invest...</span>
+  </div>
+</div>
+
+<div class="art-hero">
+  <div class="art-hero-inner">
+    <div class="art-tag-badge">📈 Math</div>
+    <h1>The Rule of 72: The Mental Math Trick Every Investor Should Know</h1>
+    <p class="subtitle">Divide 72 by your expected return. That's how many years to double your money. Use it everywhere.</p>
+    <div class="art-meta-bar">
+      <span>⏱ <strong>5 min read</strong></span>
+      <span>· By <strong>WealthWise Team</strong></span>
+      <span>· February 2025</span>
+      <span>· <strong>Free</strong></span>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+<div>
+  <div class="art-intro fade">The Rule of 72 is the simplest, most useful mental math formula in personal finance. It tells you how many years it takes to double your money at any given rate of return — and you can do it in your head in 5 seconds. Once you know it, you'll use it constantly.</div>
+  
+    <div class="article-section fade">
+      <h2>The Formula</h2>
+      <p>Years to double = 72 ÷ Annual Return Rate</p><p>Examples: At 6% annual return — 72 ÷ 6 = 12 years to double. At 8% return — 72 ÷ 8 = 9 years to double. At 12% return — 72 ÷ 12 = 6 years to double. At 1% (traditional savings account) — 72 ÷ 1 = 72 years to double.</p><p>The math is approximate but remarkably accurate. The actual number for 6% is 11.9 years. The Rule of 72 gives you 12. Close enough for any planning purpose.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>How to Use It for Investing Decisions</h2>
+      <p>The Rule of 72 instantly reveals why investment fees matter so much. A fund earning 8% doubles every 9 years. A fund earning the same 8% but charging a 1% fee earns 7% net — doubling every 10.3 years. That 1.3 year difference compounding over 30 years costs you enormous amounts.</p><p>It also shows why high-interest debt is so dangerous. Credit card debt at 20% APR doubles every 3.6 years. A $5,000 balance you ignore becomes $10,000 in 3.6 years, then $20,000 in another 3.6 years. The same math that builds wealth through investing destroys it through debt.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>Apply It to Real Life Decisions</h2>
+      <p>Comparing savings accounts: Your bank offers 0.5% APY. Ally Bank offers 4.25% APY. Using Rule of 72: 72 ÷ 0.5 = 144 years to double at your bank. 72 ÷ 4.25 = 17 years to double at Ally. Same $10,000. Completely different outcomes.</p><p>Evaluating compound growth timelines: Starting at 25 vs 35 with a 7% return. At 25: money doubles at 35, 45, 55, 65 — four doublings. $10,000 becomes $160,000. At 35: doubles at 45, 55, 65 — three doublings. $10,000 becomes $80,000. A 10-year head start at 7% literally doubles your final outcome.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>The Inverse Rule of 72</h2>
+      <p>You can also use it backwards: if you want to double your money in 8 years, what return do you need? 72 ÷ 8 = 9% annual return. In 10 years? 72 ÷ 10 = 7.2%. In 6 years? 72 ÷ 6 = 12%.</p><p>This helps you reality-check investment promises. Someone claiming 50% annual returns is promising to double your money every 1.4 years. Historically, the best investors on earth — Warren Buffett, Peter Lynch — have averaged 20-25% over decades. 50% sustained returns don't exist legitimately. The Rule of 72 helps you spot BS quickly.</p>
+    </div>
+
+  <div class="art-nav">
+    <a href="investing-growth-vs-value.html" class="nav-btn nav-prev">← Growth vs Value Stocks: Which Investment...</a>
+    <a href="investing-global-diversification.html" class="nav-btn nav-next">Should You Invest Internationally? The C... →</a>
+  </div>
+  <div class="back-list"><a href="all-reads.html#sec-invest">← Back to All Investing Guides</a></div>
+</div>
+
+<aside class="sidebar">
+  <div class="sb-card">
+    <div class="sb-head">📋 In This Article</div>
+    <div class="sb-body">
+      <a class="toc-link" href="#"><span class="toc-num">01</span>The Formula</a><a class="toc-link" href="#"><span class="toc-num">02</span>How to Use It for Investing Decisions</a><a class="toc-link" href="#"><span class="toc-num">03</span>Apply It to Real Life Decisions</a><a class="toc-link" href="#"><span class="toc-num">04</span>The Inverse Rule of 72</a>
+    </div>
+  </div>
+
+  <div class="ad-zone">
+    <strong>📢 AdSense 300×250</strong>
+    <p>Sidebar ad unit</p>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">💼 Recommended Tool</div>
+    <div class="sb-body">
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;line-height:1.55;">Start investing with M1 Finance — free, automatic DRIP, fractional shares.</p>
+      <a href="review-m1-finance.html" class="sb-cta">Open Free Account →</a>
+      <p style="font-size:0.62rem;color:var(--muted);text-align:center;">Affiliate link · No extra cost to you</p>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">📚 More Investing Guides</div>
+    <div class="sb-body">
+      <a class="toc-link" href="investing-dividend-portfolio.html"><span class="toc-num">💰</span>How to Build a $1,000/Month Dividend P...</a><a class="toc-link" href="investing-index-vs-etf.html"><span class="toc-num">📊</span>Index Funds vs ETFs: What's the Differ...</a><a class="toc-link" href="investing-3-fund-portfolio.html"><span class="toc-num">🎯</span>The 3-Fund Portfolio: The Simplest Inv...</a><a class="toc-link" href="investing-market-crash.html"><span class="toc-num">📉</span>What to Do When the Stock Market Crash...</a><a class="toc-link" href="investing-acorns-review.html"><span class="toc-num">🪙</span>Can Acorns Round-Ups Really Build Weal...</a>
+      <a class="toc-link" href="all-reads.html#sec-invest" style="color:var(--accent);font-weight:700;"><span class="toc-num">→</span>See all 14 guides</a>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a class="footer-logo" href="index.html">Wealth<span>Wise</span></a>
+      <div class="footer-links">
+        <a href="all-reads.html">All Reads</a>
+        <a href="investing.html">Investing</a>
+        <a href="resources.html">Tools</a>
+        <a href="about.html">About</a>
+        <a href="about.html#disclosure">Disclosure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 WealthWise · Nigeria 🇳🇬 · <a href="about.html#disclosure" style="color:#555;">Affiliate Disclosure</a></div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById("progressBar").style.width = pct + "%";
+  });
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add("in"); }), {threshold:0.08});
+  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

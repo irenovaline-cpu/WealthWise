@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>7 Dividend Aristocrats That Have Raised Payouts for 25+ Years — WealthWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{--ink:#0d0d0d;--paper:#f7f4ee;--gold:#c9a84c;--gold-light:#f0d98a;--moss:#2a3d2e;--cream:#fdf9f0;--soft:#e8e3d8;--muted:#7a7060;--rule:#d4cfc6;--accent:#1a4fd4;--accent-light:#ebf0ff;}
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);}
+
+  header{background:var(--ink);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .logo span{color:var(--gold);}
+  nav{display:flex;gap:24px;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a:hover{color:var(--gold);}
+  .cta-nav{background:var(--gold)!important;color:var(--ink)!important;padding:7px 16px;border-radius:3px;}
+  @media(max-width:700px){nav{display:none;}}
+
+  /* PROGRESS BAR */
+  .progress-bar{position:fixed;top:67px;left:0;height:3px;background:var(--gold);width:0%;z-index:99;transition:width 0.1s;}
+
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--paper);border-bottom:1px solid var(--rule);padding:10px 24px;}
+  .bc{max-width:860px;margin:0 auto;font-size:0.72rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .bc a{color:var(--muted);text-decoration:none;} .bc a:hover{color:var(--accent);}
+  .bc-sep{color:var(--rule);}
+
+  /* ARTICLE HERO */
+  .art-hero{background:linear-gradient(135deg,#0d1a3a,#1a3a7a);padding:52px 24px 44px;}
+  .art-hero-inner{max-width:860px;margin:0 auto;}
+  .art-tag-badge{display:inline-block;background:var(--accent);color:white;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:14px;}
+  .art-hero h1{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:white;line-height:1.2;margin-bottom:12px;letter-spacing:-0.5px;}
+  .art-hero .subtitle{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:22px;font-weight:300;font-family:"Lora",serif;font-style:italic;}
+  .art-meta-bar{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+  .art-meta-bar span{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.5px;}
+  .art-meta-bar strong{color:var(--gold);}
+
+  /* MAIN LAYOUT */
+  .art-layout{max-width:860px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:start;}
+  @media(max-width:800px){.art-layout{grid-template-columns:1fr;}}
+
+  /* ARTICLE BODY */
+  .art-intro{font-family:"Lora",serif;font-size:1.05rem;line-height:1.85;color:#333;margin-bottom:36px;padding:20px 24px;background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;}
+  .article-section{margin-bottom:36px;}
+  .article-section h2{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:900;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+  .article-section p{font-family:"Lora",serif;font-size:0.97rem;line-height:1.85;color:#2a2a2a;margin-bottom:14px;}
+
+  /* ARTICLE NAV */
+  .art-nav{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:24px;border-top:2px solid var(--rule);flex-wrap:wrap;}
+  .nav-btn{font-size:0.78rem;font-weight:700;text-decoration:none;color:var(--muted);padding:10px 16px;border:1px solid var(--rule);border-radius:5px;transition:all 0.2s;max-width:280px;line-height:1.4;}
+  .nav-btn:hover{background:var(--ink);color:var(--gold);border-color:var(--ink);}
+
+  /* BACK TO LIST */
+  .back-list{display:block;text-align:center;margin-top:24px;}
+  .back-list a{font-size:0.78rem;color:var(--accent);text-decoration:none;font-weight:700;}
+
+  /* SIDEBAR */
+  .sidebar{position:sticky;top:84px;}
+  .sb-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:18px;}
+  .sb-head{background:var(--ink);color:var(--gold);padding:10px 16px;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .sb-body{padding:16px;}
+  .toc-link{display:block;font-size:0.8rem;color:var(--muted);text-decoration:none;padding:7px 0;border-bottom:1px solid var(--soft);transition:color 0.2s;display:flex;gap:8px;align-items:center;}
+  .toc-link:last-child{border-bottom:none;}
+  .toc-link:hover{color:var(--accent);}
+  .toc-num{font-family:"Playfair Display",serif;font-size:0.9rem;font-weight:900;color:var(--accent);opacity:0.5;width:18px;flex-shrink:0;}
+  .sb-cta{display:block;background:var(--gold);color:var(--ink);text-align:center;padding:12px;border-radius:6px;font-weight:700;font-size:0.85rem;text-decoration:none;margin-bottom:10px;transition:background 0.2s;}
+  .sb-cta:hover{background:var(--gold-light);}
+  .ad-zone{background:var(--paper);border:2px dashed var(--rule);border-radius:8px;padding:18px;text-align:center;margin-bottom:18px;}
+  .ad-zone strong{display:block;font-size:0.82rem;color:var(--ink);margin-bottom:3px;}
+  .ad-zone p{font-size:0.58rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+
+  footer{background:var(--ink);color:#888;padding:36px 24px 20px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #222;}
+  .footer-logo{font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .footer-logo span{color:var(--gold);}
+  .footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .footer-links a{color:#888;text-decoration:none;font-size:0.75rem;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{font-size:0.7rem;text-align:center;}
+
+  .fade{opacity:0;transform:translateY(14px);transition:opacity 0.45s ease,transform 0.45s ease;}
+  .fade.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
+    <nav>
+      <a href="investing.html" class="active">Investing</a>
+      <a href="debt-free.html">Debt-Free</a>
+      <a href="resources.html">Tools</a>
+      <a href="all-reads.html">All Reads</a>
+      <a href="about.html#contact" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc">
+    <a href="index.html">Home</a><span class="bc-sep">›</span>
+    <a href="all-reads.html">All Reads</a><span class="bc-sep">›</span>
+    <a href="investing.html">Investing</a><span class="bc-sep">›</span>
+    <span>7 Dividend Aristocrats That Have Raised Payouts fo...</span>
+  </div>
+</div>
+
+<div class="art-hero">
+  <div class="art-hero-inner">
+    <div class="art-tag-badge">📈 Stocks</div>
+    <h1>7 Dividend Aristocrats That Have Raised Payouts for 25+ Years</h1>
+    <p class="subtitle">These companies have increased dividends through recessions, pandemics, and market crashes. Here's why.</p>
+    <div class="art-meta-bar">
+      <span>⏱ <strong>11 min read</strong></span>
+      <span>· By <strong>WealthWise Team</strong></span>
+      <span>· February 2025</span>
+      <span>· <strong>Free</strong></span>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+<div>
+  <div class="art-intro fade">A Dividend Aristocrat is a company in the S&P 500 that has increased its dividend payment every single year for at least 25 consecutive years. Through the dot-com crash, the 2008 financial crisis, and COVID — these companies never cut and never stopped raising. They are the gold standard of dividend investing.</div>
+  
+    <div class="article-section fade">
+      <h2>Why Dividend Aristocrats Work</h2>
+      <p>Raising dividends requires consistent profitability and cash flow. Companies that have done it for 25+ years have proven they can generate cash through any economic environment. This durability is exactly what dividend investors are paying for.</p><p>Research from S&P Global shows that Dividend Aristocrats have historically outperformed the broader S&P 500 with lower volatility. You get better risk-adjusted returns because you're selecting the most financially durable companies on earth.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>The 7 Stocks to Know</h2>
+      <p>Johnson & Johnson (JNJ) — 60+ years of consecutive increases. Healthcare giant with pharmaceutical, medical device, and consumer health divisions. Yield: 3.1%. The definition of defensive dividend stock.</p><p>Coca-Cola (KO) — 60+ years of increases. Warren Buffett's largest personal holding for decades. Global brand moat, pricing power, and emerging market growth. Yield: 3.2%.</p><p>Procter & Gamble (PG) — 66+ years of increases. Sells essential consumer goods (Tide, Pampers, Gillette) in 180+ countries. People buy these products regardless of economic conditions. Yield: 2.4%.</p><p>Realty Income (O) — Monthly dividend payer with 25+ years of increases. Triple-net lease REIT with 11,000+ properties. Nicknamed 'The Monthly Dividend Company.' Yield: 5.5%.</p><p>3M (MMM) — 64+ years of increases. Industrial conglomerate with 60,000+ products across healthcare, safety, and consumer segments. Yield: 6.8%.</p><p>AbbVie (ABBV) — Pharmaceutical giant that inherited Abbott Labs' 40+ year streak. HUMIRA sales declining but diversified pipeline replacing revenue. Yield: 3.9%.</p><p>PepsiCo (PEP) — 50+ years of increases. Snacks (Frito-Lay) plus beverages create more stable revenue than Coke. International growth runway. Yield: 3.0%.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>What to Look for Before Buying</h2>
+      <p>Payout ratio: This is the percentage of earnings paid as dividends. A ratio below 60% is generally safe. Above 80% means the dividend could be at risk if earnings decline. Check this before any dividend stock purchase.</p><p>Dividend growth rate: A stock yielding 3% that grows its dividend 8% annually will yield 6.5% on your original investment in 10 years (yield on cost). Dividend growth matters as much as current yield.</p><p>Free cash flow coverage: The dividend must be covered by free cash flow, not just earnings. Companies can report earnings without generating actual cash. FCF coverage ratio above 1.5x indicates a safe dividend.</p>
+    </div>
+    <div class="article-section fade">
+      <h2>How to Build Around These 7</h2>
+      <p>Don't buy all 7 equally. Build position sizes based on your conviction and sector balance. A portfolio overly concentrated in consumer staples (KO, PG, PEP) has less diversification than it appears.</p><p>Consider adding REITs (O), healthcare (JNJ, ABBV), and industrials (MMM) alongside consumer staples for true sector diversification. Then supplement with ETFs like SCHD (Schwab US Dividend Equity ETF) for broader dividend exposure across 100+ dividend stocks automatically.</p>
+    </div>
+
+  <div class="art-nav">
+    <a href="investing-m1-review.html" class="nav-btn nav-prev">← M1 Finance Review: The Best Free Investi...</a>
+    <a href="investing-dollar-cost-averaging.html" class="nav-btn nav-next">Dollar-Cost Averaging: Why Investing the... →</a>
+  </div>
+  <div class="back-list"><a href="all-reads.html#sec-invest">← Back to All Investing Guides</a></div>
+</div>
+
+<aside class="sidebar">
+  <div class="sb-card">
+    <div class="sb-head">📋 In This Article</div>
+    <div class="sb-body">
+      <a class="toc-link" href="#"><span class="toc-num">01</span>Why Dividend Aristocrats Work</a><a class="toc-link" href="#"><span class="toc-num">02</span>The 7 Stocks to Know</a><a class="toc-link" href="#"><span class="toc-num">03</span>What to Look for Before Buying</a><a class="toc-link" href="#"><span class="toc-num">04</span>How to Build Around These 7</a>
+    </div>
+  </div>
+
+  <div class="ad-zone">
+    <strong>📢 AdSense 300×250</strong>
+    <p>Sidebar ad unit</p>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">💼 Recommended Tool</div>
+    <div class="sb-body">
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;line-height:1.55;">Start investing with M1 Finance — free, automatic DRIP, fractional shares.</p>
+      <a href="review-m1-finance.html" class="sb-cta">Open Free Account →</a>
+      <p style="font-size:0.62rem;color:var(--muted);text-align:center;">Affiliate link · No extra cost to you</p>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">📚 More Investing Guides</div>
+    <div class="sb-body">
+      <a class="toc-link" href="investing-dividend-portfolio.html"><span class="toc-num">💰</span>How to Build a $1,000/Month Dividend P...</a><a class="toc-link" href="investing-index-vs-etf.html"><span class="toc-num">📊</span>Index Funds vs ETFs: What's the Differ...</a><a class="toc-link" href="investing-3-fund-portfolio.html"><span class="toc-num">🎯</span>The 3-Fund Portfolio: The Simplest Inv...</a><a class="toc-link" href="investing-market-crash.html"><span class="toc-num">📉</span>What to Do When the Stock Market Crash...</a><a class="toc-link" href="investing-acorns-review.html"><span class="toc-num">🪙</span>Can Acorns Round-Ups Really Build Weal...</a>
+      <a class="toc-link" href="all-reads.html#sec-invest" style="color:var(--accent);font-weight:700;"><span class="toc-num">→</span>See all 14 guides</a>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a class="footer-logo" href="index.html">Wealth<span>Wise</span></a>
+      <div class="footer-links">
+        <a href="all-reads.html">All Reads</a>
+        <a href="investing.html">Investing</a>
+        <a href="resources.html">Tools</a>
+        <a href="about.html">About</a>
+        <a href="about.html#disclosure">Disclosure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 WealthWise · Nigeria 🇳🇬 · <a href="about.html#disclosure" style="color:#555;">Affiliate Disclosure</a></div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById("progressBar").style.width = pct + "%";
+  });
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add("in"); }), {threshold:0.08});
+  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
