@@ -1,411 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Debt-Free — WealthWise</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debt-Free Guides for Nigerians — Get Out of Debt Fast | WealthWise</title>
+<meta name="description" content="Free, practical debt payoff guides for Nigerians — credit card debt, student loans, mortgage payoff, budgeting, credit score, and more. 12 complete guides.">
+<link rel="canonical" href="https://wealthwise.com.ng/debt-free">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a5c3a'/><text x='50%' y='55%' text-anchor='middle' dominant-baseline='middle' font-size='20' fill='%23f4c843'>W</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0d0d0d;
-    --paper: #f7f4ee;
-    --gold: #c9a84c;
-    --gold-light: #f0d98a;
-    --moss: #2a3d2e;
-    --cream: #fdf9f0;
-    --soft: #e8e3d8;
-    --muted: #7a7060;
-    --rule: #d4cfc6;
-    --accent: #c1341a;
-    --accent-light: #fff0eb;
-    --accent-dark: #7a1a08;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);}
+:root{--green:#1a5c3a;--green-mid:#2d7a52;--green-light:#e8f5ee;--accent:#f4c843;--dark:#111b14;--text:#2c3e30;--muted:#6b7c70;--border:#d4e4da;--white:#fff;--bg:#f9fbf9}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--green);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--green)}
 
-  /* HEADER */
-  header{background:var(--ink);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
-  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--paper);text-decoration:none;letter-spacing:-0.5px;}
-  .logo span{color:var(--gold);}
-  nav{display:flex;gap:24px;}
-  nav a{color:#aaa;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
-  nav a:hover,nav a.active{color:var(--gold);}
-  .cta-nav{background:var(--gold)!important;color:var(--ink)!important;padding:7px 16px;border-radius:3px;}
-  @media(max-width:700px){nav{display:none;}}
+/* HERO */
+.cat-hero{background:var(--green);padding:72px 24px 56px;color:var(--white)}
+.cat-hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+@media(max-width:640px){.cat-hero-inner{grid-template-columns:1fr}}
+.cat-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin-bottom:16px}
+.cat-hero h1 em{color:var(--accent);font-style:italic}
+.cat-hero p{color:rgba(255,255,255,.8);font-size:1.05rem;max-width:520px;line-height:1.7}
+.cat-hero .guide-count{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:24px 32px;text-align:center;white-space:nowrap}
+.cat-hero .guide-count .num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--accent);line-height:1}
+.cat-hero .guide-count .label{font-size:.85rem;color:rgba(255,255,255,.65);margin-top:4px}
 
-  /* BREADCRUMB */
-  .breadcrumb{background:var(--paper);border-bottom:1px solid var(--rule);padding:10px 24px;}
-  .bc{max-width:1200px;margin:0 auto;font-size:0.72rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-  .bc a{color:var(--muted);text-decoration:none;}
-  .bc a:hover{color:var(--accent);}
-  .bc-sep{color:var(--rule);}
+/* PATH SECTION */
+.path-section{background:var(--white);border-bottom:1px solid var(--border);padding:40px 24px}
+.path-inner{max-width:900px;margin:0 auto}
+.path-inner h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dark);margin-bottom:20px}
+.path-steps{display:flex;gap:0;overflow-x:auto;padding-bottom:4px}
+.path-step{flex-shrink:0;display:flex;align-items:center}
+.path-node{background:var(--green-light);border:2px solid var(--green);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px}
+.path-node .step-num{font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.05em}
+.path-node .step-title{font-size:.85rem;font-weight:600;color:var(--dark);margin-top:2px;line-height:1.3}
+.path-arrow{padding:0 10px;color:var(--muted);font-size:1.2rem;flex-shrink:0}
 
-  /* HERO */
-  .cat-hero{background:linear-gradient(135deg, #2e0a0a, #5a1a1a);padding:64px 24px 56px;position:relative;overflow:hidden;}
-  .cat-hero::before{content:"💳";position:absolute;right:-40px;top:-40px;font-size:20rem;opacity:0.04;pointer-events:none;line-height:1;}
-  .cat-hero-inner{max-width:1200px;margin:0 auto;position:relative;}
-  .cat-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-  .cat-eyebrow::before{content:"";display:block;width:28px;height:2px;background:var(--gold);}
-  .cat-hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:white;line-height:1.1;margin-bottom:14px;letter-spacing:-1px;}
-  .cat-hero h1 em{color:var(--gold);font-style:italic;}
-  .cat-hero p{font-size:1rem;color:rgba(255,255,255,0.65);max-width:580px;line-height:1.75;margin-bottom:32px;font-weight:300;}
-  .cat-stats{display:flex;gap:28px;flex-wrap:wrap;}
-  .cat-stat{border-left:2px solid rgba(201,168,76,0.4);padding-left:14px;}
-  .cat-stat .n{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1;}
-  .cat-stat .l{font-size:0.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;}
+/* ARTICLE GRID */
+.articles-section{max-width:900px;margin:0 auto;padding:56px 24px 80px}
+.section-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.articles-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:620px){.articles-grid{grid-template-columns:1fr}}
 
-  /* LAYOUT */
-  .page-layout{max-width:1200px;margin:0 auto;padding:56px 24px;display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;}
-  @media(max-width:900px){.page-layout{grid-template-columns:1fr;}}
+.article-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;text-decoration:none;color:inherit;transition:all .22s;display:flex;flex-direction:column}
+.article-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,92,58,.1)}
+.article-card .tag{display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.article-card .tag-badge{background:var(--green-light);color:var(--green);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 10px;border-radius:20px}
+.article-card .read-time{font-size:.78rem;color:var(--muted)}
+.article-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.35;color:var(--dark);margin-bottom:10px}
+.article-card p{font-size:.88rem;color:var(--muted);line-height:1.55;flex:1}
+.article-card .read-more{display:inline-flex;align-items:center;gap:4px;margin-top:16px;font-size:.85rem;font-weight:600;color:var(--green)}
 
-  /* SECTION HEAD */
-  .sec-head{margin-bottom:28px;padding-bottom:12px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-  .sec-head h2{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;}
-  .sec-head a{font-size:0.78rem;color:var(--accent);text-decoration:none;font-weight:600;}
+/* FEATURED */
+.article-card.featured{grid-column:1/-1;display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:center;background:var(--green);color:var(--white);border-color:var(--green)}
+@media(max-width:620px){.article-card.featured{grid-template-columns:1fr}}
+.article-card.featured h3{color:var(--white);font-size:1.35rem}
+.article-card.featured p{color:rgba(255,255,255,.75)}
+.article-card.featured .tag-badge{background:rgba(255,255,255,.2);color:var(--white)}
+.article-card.featured .read-time{color:rgba(255,255,255,.6)}
+.article-card.featured .read-more{color:var(--accent)}
+.featured-stat{text-align:center;padding:24px;background:rgba(255,255,255,.1);border-radius:10px}
+.featured-stat .big{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);line-height:1}
+.featured-stat .small{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:6px}
 
-  /* INTRO */
-  .intro-box{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:40px;font-size:0.95rem;color:var(--accent-dark);line-height:1.75;}
+/* CTA */
+.cta-section{background:var(--dark);padding:56px 24px;text-align:center;color:var(--white)}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:12px}
+.cta-section p{color:rgba(255,255,255,.65);max-width:500px;margin:0 auto 28px}
+.cta-grid{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-btn{padding:13px 28px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s}
+.cta-btn.primary{background:var(--accent);color:var(--dark)}
+.cta-btn.secondary{border:1px solid rgba(255,255,255,.25);color:var(--white)}
+.cta-btn:hover{opacity:.88}
 
-  /* ARTICLE CARDS */
-  .articles-section{margin-bottom:48px;}
-  .arts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  @media(max-width:600px){.arts-grid{grid-template-columns:1fr;}}
-  .art-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;}
-  .art-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(0,0,0,0.1);border-color:var(--accent);}
-  .art-card-top{height:72px;background:linear-gradient(135deg, #2e0a0a, #5a1a1a);display:flex;align-items:center;justify-content:space-between;padding:0 18px;}
-  .art-emoji{font-size:1.8rem;}
-  .art-tag{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);padding:3px 10px;border-radius:2px;}
-  .art-card-body{padding:18px;flex:1;display:flex;flex-direction:column;}
-  .art-card-body h3{font-family:"Playfair Display",serif;font-size:0.98rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
-  .art-card-body p{font-size:0.8rem;color:var(--muted);line-height:1.6;flex:1;margin-bottom:14px;}
-  .art-meta{display:flex;justify-content:space-between;align-items:center;}
-  .art-time{font-size:0.7rem;color:var(--muted);}
-  .art-arrow{font-size:0.78rem;font-weight:700;color:var(--accent);}
-
-  /* TIPS */
-  .tips-section{margin-bottom:48px;}
-  .tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  @media(max-width:600px){.tips-grid{grid-template-columns:1fr;}}
-  .tip-card{background:white;border:1px solid var(--rule);border-radius:10px;padding:22px;display:flex;gap:16px;align-items:flex-start;transition:transform 0.2s,border-color 0.2s;}
-  .tip-card:hover{transform:translateY(-3px);border-color:var(--accent);}
-  .tip-num{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;color:var(--accent);opacity:0.4;line-height:1;flex-shrink:0;}
-  .tip-card h4{font-size:0.9rem;font-weight:700;margin-bottom:6px;}
-  .tip-card p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
-
-  /* CTA BANNER */
-  .cta-banner{background:linear-gradient(135deg, #2e0a0a, #5a1a1a);border-radius:14px;padding:32px;text-align:center;margin-bottom:48px;}
-  .cta-banner h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:white;margin-bottom:8px;}
-  .cta-banner p{font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:22px;}
-  .btn-cta{display:inline-block;background:var(--gold);color:var(--ink);padding:13px 28px;border-radius:5px;font-weight:700;text-decoration:none;font-size:0.9rem;transition:background 0.2s,transform 0.15s;}
-  .btn-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
-
-  /* SIDEBAR */
-  .sidebar{position:sticky;top:84px;}
-  .sb-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:20px;}
-  .sb-head{background:var(--ink);color:var(--gold);padding:10px 16px;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
-  .sb-body{padding:16px;}
-
-  /* TOOLS IN SIDEBAR */
-  .tool-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--soft);text-decoration:none;color:var(--ink);transition:color 0.2s;}
-  .tool-item:last-child{border-bottom:none;padding-bottom:0;}
-  .tool-item:hover h4{color:var(--accent);}
-  .tool-emoji{font-size:1.6rem;flex-shrink:0;}
-  .tool-info h4{font-size:0.85rem;font-weight:700;margin-bottom:2px;}
-  .tool-info p{font-size:0.72rem;color:var(--muted);}
-  .tool-badge{font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--accent-light);color:var(--accent-dark);padding:3px 7px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
-
-  /* NEWSLETTER */
-  .sb-nl input{width:100%;padding:10px 12px;border:2px solid var(--soft);border-radius:5px;font-family:"DM Sans",sans-serif;font-size:0.84rem;outline:none;margin-bottom:8px;background:var(--paper);transition:border-color 0.2s;}
-  .sb-nl input:focus{border-color:var(--accent);}
-  .sb-nl button{width:100%;background:var(--ink);color:white;border:none;padding:11px;border-radius:5px;font-family:"DM Sans",sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
-  .sb-nl button:hover{background:var(--moss);}
-  .sb-fine{font-size:0.62rem;color:var(--muted);text-align:center;margin-top:8px;}
-
-  /* CATEGORIES NAV */
-  .other-cats{list-style:none;}
-  .other-cats li a{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--soft);text-decoration:none;color:var(--ink);font-size:0.85rem;font-weight:500;transition:color 0.2s;}
-  .other-cats li:last-child a{border-bottom:none;}
-  .other-cats li a:hover{color:var(--accent);}
-  .other-cats li a .cat-emo{font-size:1.2rem;}
-
-  /* AD */
-  .ad-zone{background:var(--paper);border:2px dashed var(--rule);border-radius:8px;padding:20px;text-align:center;margin-bottom:20px;}
-  .ad-zone p{font-size:0.6rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
-  .ad-zone strong{display:block;font-size:0.85rem;color:var(--ink);text-transform:none;letter-spacing:0;margin-bottom:3px;}
-
-  /* FOOTER */
-  footer{background:var(--ink);color:#888;padding:40px 24px 24px;}
-  .footer-inner{max-width:1200px;margin:0 auto;}
-  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #222;}
-  .footer-logo{font-family:"Playfair Display",serif;font-size:1.3rem;font-weight:900;color:var(--paper);text-decoration:none;}
-  .footer-logo span{color:var(--gold);}
-  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
-  .footer-links a{color:#888;text-decoration:none;font-size:0.78rem;transition:color 0.2s;}
-  .footer-links a:hover{color:var(--gold);}
-  .footer-bottom{font-size:0.72rem;text-align:center;}
-
-  /* FADE */
-  .fade{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
-  .fade.in{opacity:1;transform:translateY(0);}
+footer{background:var(--dark);color:rgba(255,255,255,.6);padding:40px 24px;border-top:1px solid rgba(255,255,255,.1)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--white)}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{width:100%;text-align:center;margin-top:24px;font-size:.82rem;border-top:1px solid rgba(255,255,255,.1);padding-top:24px}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="header-inner">
-    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
-    <nav>
-      <a href="investing.html" >Investing</a>
-      <a href="debt-free.html" class='active'>Budgeting</a>
-      <a href="real-estate.html" >Real Estate</a>
-      <a href="resources.html">Tools</a>
-      <a href="about.html#contact" class="cta-nav">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<div class="breadcrumb">
-  <div class="bc">
-    <a href="index.html">Home</a>
-    <span class="bc-sep">›</span>
-    <span>Debt-Free</span>
-  </div>
-</div>
+<nav><div class="nav-inner"><a class="logo" href="index.html">Wealth<span>Wise</span></a><ul class="nav-links"><li><a href="investing.html">Investing</a></li><li><a href="debt-free.html" class="active">Debt-Free</a></li><li><a href="resources.html">Tools</a></li><li><a href="all-reads.html">All Reads</a></li><li><a href="about.html#contact">Contact</a></li></ul></div></nav>
 
 <div class="cat-hero">
   <div class="cat-hero-inner">
-    <div class="cat-eyebrow">Debt-Free</div>
-    <h1>💳 <em>Debt-Free</em></h1>
-    <p>Pay off debt faster with proven avalanche & snowball strategies.</p>
-    <div class="cat-stats">
-      <div class="cat-stat"><div class="n">6</div><div class="l">Guides</div></div>
-      <div class="cat-stat"><div class="n">3</div><div class="l">Tools</div></div>
-      <div class="cat-stat"><div class="n">Free</div><div class="l">Always</div></div>
+    <div>
+      <h1>Get Debt-Free.<br><em>For good.</em></h1>
+      <p>Practical, actionable guides for paying off credit cards, loans, and building a life without financial stress — written for the Nigerian context.</p>
+    </div>
+    <div class="guide-count">
+      <div class="num">12</div>
+      <div class="label">Free Guides</div>
     </div>
   </div>
 </div>
 
-<div class="page-layout">
-<div>
-
-  <div class="intro-box fade">Debt is the single biggest obstacle standing between most people and financial freedom. The good news: getting out of debt is a math problem with a proven solution. The right strategy, consistently applied, can eliminate years of payments and save you thousands in interest.</div>
-
-  <div class="articles-section">
-    <div class="sec-head">
-      <h2>📰 All Debt-Free Guides</h2>
-      <a href="index.html">← Back to Home</a>
+<div class="path-section">
+  <div class="path-inner">
+    <h2>Recommended Learning Path</h2>
+    <div class="path-steps">
+      <div class="path-step"><div class="path-node"><div class="step-num">Step 1</div><div class="step-title">Choose a Strategy</div></div><div class="path-arrow">→</div></div>
+      <div class="path-step"><div class="path-node"><div class="step-num">Step 2</div><div class="step-title">Build Emergency Fund</div></div><div class="path-arrow">→</div></div>
+      <div class="path-step"><div class="path-node"><div class="step-num">Step 3</div><div class="step-title">Attack Debt Aggressively</div></div><div class="path-arrow">→</div></div>
+      <div class="path-step"><div class="path-node"><div class="step-num">Step 4</div><div class="step-title">Raise Credit Score</div></div><div class="path-arrow">→</div></div>
+      <div class="path-step"><div class="path-node"><div class="step-num">Step 5</div><div class="step-title">Stay Debt-Free Forever</div></div></div>
     </div>
-    <div class="arts-grid fade">
-        <a class="art-card" href="#">
-          <div class="art-card-top">
-            <span class="art-emoji">❄️</span>
-            <span class="art-tag">Strategy</span>
-          </div>
-          <div class="art-card-body">
-            <h3>Debt Snowball vs Debt Avalanche: Which Method Pays Off Debt Faster?</h3>
-            <p>We ran the numbers on both strategies across 5 debt scenarios. Here's the definitive answer.</p>
-            <div class="art-meta">
-              <span class="art-time">⏱ 9 min read</span>
-              <span class="art-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-        <a class="art-card" href="#">
-          <div class="art-card-top">
-            <span class="art-emoji">💳</span>
-            <span class="art-tag">Credit Cards</span>
-          </div>
-          <div class="art-card-body">
-            <h3>How to Pay Off $10,000 in Credit Card Debt in 12 Months</h3>
-            <p>A realistic, month-by-month plan for eliminating high-interest credit card debt fast.</p>
-            <div class="art-meta">
-              <span class="art-time">⏱ 11 min read</span>
-              <span class="art-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-        <a class="art-card" href="review-ynab.html">
-          <div class="art-card-top">
-            <span class="art-emoji">📊</span>
-            <span class="art-tag">Budgeting</span>
-          </div>
-          <div class="art-card-body">
-            <h3>YNAB Review: The App That Helped Users Pay Off $35M in Debt</h3>
-            <p>Zero-based budgeting works. Here's why YNAB is the best tool for debt payoff.</p>
-            <div class="art-meta">
-              <span class="art-time">⏱ 7 min read</span>
-              <span class="art-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-        <a class="art-card" href="#">
-          <div class="art-card-top">
-            <span class="art-emoji">🏠</span>
-            <span class="art-tag">Mortgage</span>
-          </div>
-          <div class="art-card-body">
-            <h3>Should You Pay Off Your Mortgage Early or Invest Instead?</h3>
-            <p>The math might surprise you. We break down both scenarios across different interest rate environments.</p>
-            <div class="art-meta">
-              <span class="art-time">⏱ 13 min read</span>
-              <span class="art-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-        <a class="art-card" href="#">
-          <div class="art-card-top">
-            <span class="art-emoji">🎓</span>
-            <span class="art-tag">Student Loans</span>
-          </div>
-          <div class="art-card-body">
-            <h3>Student Loan Payoff Strategies: Forgiveness, Refinancing, and Aggressive Paydown</h3>
-            <p>All your options explained clearly so you can choose the right path for your situation.</p>
-            <div class="art-meta">
-              <span class="art-time">⏱ 10 min read</span>
-              <span class="art-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-        <a class="art-card" href="review-credit-karma.html">
-          <div class="art-card-top">
-            <span class="art-emoji">📈</span>
-            <span class="art-tag">Credit Score</span>
-          </div>
-          <div class="art-card-body">
-            <h3>Credit Karma Review: Monitor Your Credit Score for Free</h3>
-            <p>Know your score, understand what moves it, and track your progress as you pay down debt.</p>
-            <div class="art-meta">
-              <span class="art-time">⏱ 6 min read</span>
-              <span class="art-arrow">Read →</span>
-            </div>
-          </div>
-        </a></div>
   </div>
-
-  <div class="tips-section">
-    <div class="sec-head"><h2>💡 Key Debt-Free Principles</h2></div>
-    <div class="tips-grid fade">
-        <div class="tip-card">
-          <div class="tip-num">01</div>
-          <div>
-            <h4>List Every Debt You Owe</h4>
-            <p>Write down every debt: balance, interest rate, and minimum payment. Most people don't know the full picture. Clarity is the first step.</p>
-          </div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-num">02</div>
-          <div>
-            <h4>Stop Creating New Debt Immediately</h4>
-            <p>You can't fill a bucket with a hole in it. Cut up the cards, freeze accounts, do whatever it takes to stop the bleeding first.</p>
-          </div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-num">03</div>
-          <div>
-            <h4>Pay More Than the Minimum</h4>
-            <p>Paying only minimums on a $5,000 credit card at 20% APR takes 15 years and costs $8,000 in interest. Double the minimum and you're done in 3 years.</p>
-          </div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-num">04</div>
-          <div>
-            <h4>Use Windfalls Aggressively</h4>
-            <p>Tax refund, bonus, birthday money — every windfall goes straight to debt. This single habit can shave years off your payoff timeline.</p>
-          </div>
-        </div></div>
-  </div>
-
-  <div class="cta-banner fade">
-    <h3>Ready to Take Action?</h3>
-    <p>Use our free tools and calculators to put these strategies to work today.</p>
-    <a href="resources.html" class="btn-cta">Explore Free Tools →</a>
-  </div>
-
 </div>
 
-<aside class="sidebar">
+<div class="articles-section">
+  <div class="section-label">💳 All 12 Debt-Free Guides</div>
 
-  <div class="sb-card">
-    <div class="sb-head">🛠️ Recommended Tools</div>
-    <div class="sb-body">
-        <a class="tool-item" href="review-ynab.html">
-          <span class="tool-emoji">💳</span>
-          <div class="tool-info">
-            <h4>YNAB</h4>
-            <p>Zero-based budgeting for debt payoff</p>
-          </div>
-          <span class="tool-badge">34-DAY FREE TRIAL</span>
-        </a>
-        <a class="tool-item" href="review-credit-karma.html">
-          <span class="tool-emoji">📱</span>
-          <div class="tool-info">
-            <h4>Credit Karma</h4>
-            <p>Track your credit score free</p>
-          </div>
-          <span class="tool-badge">FREE</span>
-        </a>
-        <a class="tool-item" href="resources.html">
-          <span class="tool-emoji">🧮</span>
-          <div class="tool-info">
-            <h4>Debt Payoff Calculator</h4>
-            <p>Avalanche vs snowball calculator</p>
-          </div>
-          <span class="tool-badge">FREE</span>
-        </a></div>
+  <div class="articles-grid">
+
+    <a class="article-card featured" href="debt-snowball-vs-avalanche.html">
+      <div>
+        <div class="tag"><span class="tag-badge">❄️ Strategy — Start Here</span><span class="read-time">⏱ 9 min</span></div>
+        <h3>Debt Snowball vs Debt Avalanche: Which Pays Off Debt Faster?</h3>
+        <p>We ran the numbers on both strategies across 5 real debt scenarios. The definitive, data-backed answer — plus how to choose for your personality.</p>
+        <div class="read-more">Read the guide →</div>
+      </div>
+      <div class="featured-stat"><div class="big">$4K+</div><div class="small">avg interest saved choosing the right strategy</div></div>
+    </a>
+
+    <a class="article-card" href="debt-credit-card-10k.html">
+      <div class="tag"><span class="tag-badge">💳 Credit Cards</span><span class="read-time">⏱ 11 min</span></div>
+      <h3>How to Pay Off $10,000 in Credit Card Debt in 12 Months</h3>
+      <p>A realistic, month-by-month plan for eliminating high-interest credit card debt as fast as possible.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-student-loans.html">
+      <div class="tag"><span class="tag-badge">🎓 Student Loans</span><span class="read-time">⏱ 13 min</span></div>
+      <h3>Student Loan Payoff Strategies: Forgiveness, Refinancing & Aggressive Paydown</h3>
+      <p>All your options clearly explained so you can choose the right path for your specific situation.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-mortgage-payoff.html">
+      <div class="tag"><span class="tag-badge">🏠 Mortgage</span><span class="read-time">⏱ 12 min</span></div>
+      <h3>Should You Pay Off Your Mortgage Early or Invest Instead?</h3>
+      <p>The math might surprise you. We break down both scenarios across different interest rate environments.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-zero-based-budget.html">
+      <div class="tag"><span class="tag-badge">📊 Budgeting</span><span class="read-time">⏱ 10 min</span></div>
+      <h3>Zero-Based Budgeting: Give Every Dollar a Job and Watch Debt Disappear</h3>
+      <p>The complete guide to the budgeting system that helped users eliminate $35M in debt.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-credit-score.html">
+      <div class="tag"><span class="tag-badge">📈 Credit Score</span><span class="read-time">⏱ 8 min</span></div>
+      <h3>How to Raise Your Credit Score by 100 Points in 6 Months</h3>
+      <p>The specific actions — in order of impact — that move your score the fastest without any gimmicks.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-emergency-fund.html">
+      <div class="tag"><span class="tag-badge">🧊 Emergency Fund</span><span class="read-time">⏱ 7 min</span></div>
+      <h3>Emergency Fund 101: How Much to Save and Where to Keep It</h3>
+      <p>3 months or 6 months? In a HYSA or checking? We answer every common emergency fund question.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-balance-transfer.html">
+      <div class="tag"><span class="tag-badge">🔁 Balance Transfer</span><span class="read-time">⏱ 9 min</span></div>
+      <h3>0% APR Balance Transfer Cards: How to Use Them Without Getting Burned</h3>
+      <p>Transfer your high-interest debt to 0% APR and pay it off interest-free. Here's the right way to do it.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-cutting-costs.html">
+      <div class="tag"><span class="tag-badge">✂️ Cut Expenses</span><span class="read-time">⏱ 8 min</span></div>
+      <h3>50 Expenses You Can Cut Right Now to Free Up $500/Month for Debt Payoff</h3>
+      <p>Most people have at least $200–$500 in expenses they could painlessly eliminate. Here's the full list.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-negotiate-interest.html">
+      <div class="tag"><span class="tag-badge">🤝 Negotiation</span><span class="read-time">⏱ 6 min</span></div>
+      <h3>How to Negotiate Lower Interest Rates on Your Credit Cards (Script Included)</h3>
+      <p>A single 10-minute phone call using this exact script can save you thousands in interest charges.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-free-3-years.html">
+      <div class="tag"><span class="tag-badge">📅 Timeline</span><span class="read-time">⏱ 11 min</span></div>
+      <h3>Debt-Free in 3 Years: A Realistic Timeline for Paying Off $30,000</h3>
+      <p>The exact monthly breakdown, side hustle targets, and mindset shifts needed to hit this goal.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
+    <a class="article-card" href="debt-stay-debt-free.html">
+      <div class="tag"><span class="tag-badge">🔒 Prevention</span><span class="read-time">⏱ 7 min</span></div>
+      <h3>How to Stay Debt-Free Forever After Paying It All Off</h3>
+      <p>The systems, habits, and rules that prevent people from falling back into debt after becoming debt-free.</p>
+      <div class="read-more">Read the guide →</div>
+    </a>
+
   </div>
+</div>
 
-  <div class="ad-zone">
-    <strong>📢 AdSense 300×250</strong>
-    <p>Sidebar ad unit goes here</p>
+<div class="cta-section">
+  <h2>Ready to Crunch Your Numbers?</h2>
+  <p>Use our free debt payoff calculator to see exactly how long it will take — and how much you'll save.</p>
+  <div class="cta-grid">
+    <a class="cta-btn primary" href="resources.html">Open Debt Calculator →</a>
+    <a class="cta-btn secondary" href="all-reads.html">Browse All 50 Guides</a>
   </div>
-
-  <div class="sb-card">
-    <div class="sb-head">📬 Free Newsletter</div>
-    <div class="sb-body sb-nl">
-      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px;line-height:1.55;">One money tip every Sunday. Free forever.</p>
-      <input type="email" placeholder="your@email.com"/>
-      <button onclick="this.textContent='✓ Subscribed!'">Subscribe Free</button>
-      <p class="sb-fine">6,200+ readers · No spam</p>
-    </div>
-  </div>
-
-  <div class="sb-card">
-    <div class="sb-head">🗂️ All Categories</div>
-    <div class="sb-body">
-      <ul class="other-cats">
-        <li><a href="investing.html"><span class="cat-emo">📈</span> Investing</a></li>
-        <li><a href="debt-free.html"><span class="cat-emo">💳</span> Debt-Free</a></li>
-        <li><a href="real-estate.html"><span class="cat-emo">🏡</span> Real Estate</a></li>
-        <li><a href="retirement.html"><span class="cat-emo">🔒</span> Retirement</a></li>
-      </ul>
-    </div>
-  </div>
-
-</aside>
 </div>
 
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <a class="footer-logo" href="index.html">Wealth<span>Wise</span></a>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="resources.html">Tools</a>
-        <a href="article-dividend-portfolio.html">Articles</a>
-        <a href="about.html">About</a>
-        <a href="about.html#contact">Contact</a>
-        <a href="about.html#disclosure">Disclosure</a>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2025 WealthWise. All rights reserved. Based in Nigeria 🇳🇬</div>
-  </div>
+  <div class="footer-inner"><span class="footer-logo">WealthWise</span><div class="footer-links"><a href="index.html">Home</a><a href="investing.html">Investing</a><a href="debt-free.html">Debt-Free</a><a href="resources.html">Tools</a><a href="about.html">About</a><a href="privacy-policy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a><a href="affiliate-disclosure.html">Disclosure</a></div></div>
+  <div class="footer-inner"><div class="footer-copy">© 2025 WealthWise. All rights reserved. Based in Nigeria 🇳🇬 | Content is for educational purposes only. Not financial advice. <a href="disclaimer.html" style="color:rgba(255,255,255,.4)">Read Disclaimer</a></div></div>
 </footer>
-
-<script>
-  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add("in"); }), {threshold:0.1});
-  document.querySelectorAll(".fade").forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
