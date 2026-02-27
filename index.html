@@ -1,981 +1,800 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>WealthWise — Smart Money, Real Freedom</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WealthWise — Free Personal Finance Education for Nigerians</title>
+<meta name="description" content="WealthWise is Nigeria's free personal finance platform. Investing guides, debt payoff strategies, real estate, retirement planning — all free, jargon-free, with clear action steps.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://wealthwise.com.ng/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a5c3a'/><text x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-size='20' fill='%23f4c843'>W</text></svg>">
 
-<!-- ✅ PASTE YOUR GOOGLE ADSENSE CODE BELOW THIS LINE -->
-<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<!-- Open Graph -->
+<meta property="og:title" content="WealthWise — Free Personal Finance Education for Nigerians">
+<meta property="og:description" content="50 free guides on investing, debt payoff, real estate & retirement — written for the Nigerian context.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wealthwise.com.ng/">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --ink: #0d0d0d;
-    --paper: #f7f4ee;
-    --gold: #c9a84c;
-    --gold-light: #f0d98a;
-    --moss: #2a3d2e;
-    --cream: #fdf9f0;
-    --soft: #e8e3d8;
-    --accent: #e05c2a;
-    --muted: #7a7060;
-  }
+/* ============================
+   ROOT & RESET
+============================ */
+:root {
+  --green: #1a5c3a;
+  --green-mid: #2d7a52;
+  --green-light: #e8f5ee;
+  --green-pale: #f2faf5;
+  --accent: #f4c843;
+  --accent-dark: #c9a01e;
+  --dark: #111b14;
+  --text: #2c3e30;
+  --muted: #6b7c70;
+  --border: #d4e4da;
+  --white: #ffffff;
+  --bg: #f9fbf9;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
+/* ============================
+   NAV
+============================ */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 200;
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 66px;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--green); text-decoration: none;
+  display: flex; align-items: center; gap: 2px;
+  letter-spacing: -.01em;
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--text);
+  font-size: .9rem; font-weight: 500;
+  padding: 7px 12px; border-radius: 6px;
+  transition: all .2s;
+}
+.nav-links a:hover { background: var(--green-light); color: var(--green); }
+.nav-cta {
+  background: var(--green) !important;
+  color: var(--white) !important;
+  padding: 9px 20px !important;
+  font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--green-mid) !important; }
+@media(max-width: 768px) {
+  .nav-links li:nth-child(n+2):not(:last-child) { display: none; }
+}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--ink);
-    color: var(--paper);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 3px solid var(--gold);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-    color: var(--paper);
-    text-decoration: none;
-  }
-  .logo span { color: var(--gold); }
-  nav { display: flex; gap: 28px; }
-  nav a {
-    color: var(--soft);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--gold); }
-  .cta-nav {
-    background: var(--gold);
-    color: var(--ink) !important;
-    padding: 8px 18px;
-    border-radius: 4px;
-    font-weight: 600 !important;
-  }
-  .cta-nav:hover { background: var(--gold-light); color: var(--ink) !important; }
+/* ============================
+   HERO
+============================ */
+.hero {
+  background: var(--green);
+  padding: 80px 24px 0;
+  overflow: hidden;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(244,200,67,.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(255,255,255,.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 56px; align-items: end; position: relative;
+}
+@media(max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+}
+.hero-text { padding-bottom: 72px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: .78rem; font-weight: 700;
+  color: var(--accent); letter-spacing: .05em;
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900; line-height: 1.1;
+  color: var(--white); margin-bottom: 20px;
+  letter-spacing: -.02em;
+}
+.hero-h1 em { color: var(--accent); font-style: italic; }
+.hero-sub {
+  font-size: 1.08rem; color: rgba(255,255,255,.78);
+  max-width: 520px; line-height: 1.7; margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: var(--dark);
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 800; font-size: 1rem;
+  text-decoration: none; transition: all .2s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-primary:hover { background: #e8bb30; transform: translateY(-1px); }
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,.3);
+  color: var(--white); background: transparent;
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 600; font-size: 1rem;
+  text-decoration: none; transition: all .2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.1); }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 80px 24px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '$';
-    font-family: 'Playfair Display', serif;
-    font-size: 40vw;
-    font-weight: 900;
-    color: rgba(201,168,76,0.04);
-    position: absolute;
-    right: -5%;
-    top: -10%;
-    line-height: 1;
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 4px 12px;
-    border-radius: 2px;
-    margin-bottom: 20px;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.1;
-    margin-bottom: 20px;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  .hero h1 em { color: var(--gold); font-style: italic; }
-  .hero p {
-    font-size: 1.1rem;
-    color: #ccc;
-    line-height: 1.7;
-    margin-bottom: 32px;
-    font-weight: 300;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-  .hero-btns {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
-    padding: 14px 28px;
-    border-radius: 4px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-secondary {
-    border: 1px solid rgba(255,255,255,0.3);
-    color: var(--paper);
-    padding: 14px 28px;
-    border-radius: 4px;
-    font-weight: 500;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-  .stat-box {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 8px;
-    padding: 24px;
-    text-align: center;
-  }
-  .stat-box .num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: var(--gold);
-    display: block;
-  }
-  .stat-box .label {
-    font-size: 0.78rem;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-    display: block;
-  }
+/* HERO VISUAL - floating card stack */
+.hero-visual {
+  position: relative;
+  height: 380px; align-self: end;
+}
+.hero-card {
+  position: absolute;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+.hero-card.c1 { bottom: 40px; left: 0; width: 220px; }
+.hero-card.c2 { bottom: 120px; left: 140px; width: 250px; transform: rotate(2deg); }
+.hero-card.c3 { bottom: 20px; right: 0; width: 200px; transform: rotate(-1.5deg); }
+.hero-card .hc-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
+.hero-card .hc-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--green); line-height: 1.1; }
+.hero-card .hc-sub { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+.hero-card .hc-badge { display: inline-block; background: var(--green-light); color: var(--green); font-size: .7rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; margin-top: 8px; }
+.hero-card .hc-tag { font-size: .78rem; color: var(--muted); margin-bottom: 8px; }
+.hero-card .hc-title { font-size: .9rem; font-weight: 700; color: var(--dark); line-height: 1.35; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+/* HERO BOTTOM STRIP */
+.hero-strip {
+  background: rgba(0,0,0,.2);
+  margin-top: 56px;
+}
+.hero-strip-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; align-items: center;
+  height: 52px; gap: 32px; overflow-x: auto;
+}
+.strip-item {
+  display: flex; align-items: center; gap: 8px;
+  white-space: nowrap; font-size: .83rem;
+  color: rgba(255,255,255,.6); font-weight: 500;
+  flex-shrink: 0;
+}
+.strip-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 
-  /* ── AD BANNER ── */
-  .ad-banner {
-    background: linear-gradient(135deg, var(--moss), #1a2e1e);
-    color: white;
-    text-align: center;
-    padding: 14px;
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
-  }
-  .ad-banner strong { color: var(--gold-light); }
-  .ad-banner a { color: var(--gold-light); text-decoration: underline; }
+/* ============================
+   TRUST BAR
+============================ */
+.trust-bar { background: var(--green-pale); border-bottom: 1px solid var(--border); padding: 22px 24px; }
+.trust-bar-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: center; align-items: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .85rem; color: var(--muted);
+}
+.trust-item .ti-icon { font-size: 1.1rem; }
+.trust-item strong { color: var(--text); }
 
-  /* ── SECTION COMMONS ── */
-  section { padding: 64px 24px; }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 900;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-  .section-sub {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 540px;
-    line-height: 1.7;
-    margin-bottom: 48px;
-  }
+/* ============================
+   SECTION UTILITIES
+============================ */
+.section { padding: 72px 24px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: .72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--green); margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--dark); margin-bottom: 12px; line-height: 1.2;
+}
+.section-sub { color: var(--muted); max-width: 540px; margin-bottom: 44px; font-size: 1rem; line-height: 1.65; }
+.section-sub a { color: var(--green); font-weight: 600; text-decoration: none; }
+.section-sub a:hover { text-decoration: underline; }
 
-  /* ── CATEGORIES ── */
-  .categories { background: var(--cream); }
-  .cat-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .cat-card {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 8px;
-    padding: 28px 20px;
-    text-align: center;
-    text-decoration: none;
-    color: var(--ink);
-    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    cursor: pointer;
-  }
-  .cat-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-4px); border-color: var(--gold); }
-  .cat-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
-  .cat-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-  .cat-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+/* ============================
+   CATEGORIES STRIP
+============================ */
+.categories { background: var(--bg); }
+.cat-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media(max-width: 768px) { .cat-strip { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 480px) { .cat-strip { grid-template-columns: 1fr; } }
+.cat-tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px 24px;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: all .22s; position: relative; overflow: hidden;
+}
+.cat-tile::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--green);
+  transform: scaleX(0); transition: transform .22s;
+}
+.cat-tile:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(26,92,58,.1); }
+.cat-tile:hover::after { transform: scaleX(1); }
+.cat-tile .tile-icon { font-size: 2.2rem; margin-bottom: 14px; line-height: 1; }
+.cat-tile .tile-count { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--green); margin-bottom: 6px; }
+.cat-tile h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark); margin-bottom: 8px; }
+.cat-tile p { font-size: .86rem; color: var(--muted); line-height: 1.55; flex: 1; }
+.cat-tile .tile-cta { margin-top: 18px; font-size: .83rem; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 4px; }
 
-  /* ── ARTICLES ── */
-  .articles-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 32px;
-  }
-  .article-featured {
-    background: var(--ink);
-    border-radius: 12px;
-    overflow: hidden;
-    color: white;
-    position: relative;
-    text-decoration: none;
-    display: block;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .article-featured:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
-  .article-featured .art-img {
-    height: 260px;
-    background: linear-gradient(135deg, #2a3d2e, #1a2b1e);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-  }
-  .article-featured .art-body { padding: 28px; }
-  .article-tag {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--ink);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 2px;
-    margin-bottom: 12px;
-  }
-  .article-featured h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.25;
-    margin-bottom: 12px;
-    color: white;
-  }
-  .article-featured p { font-size: 0.9rem; color: #ccc; line-height: 1.65; margin-bottom: 20px; }
-  .art-meta { font-size: 0.78rem; color: #888; }
-  .art-meta strong { color: var(--gold); }
-  .read-more {
-    display: inline-block;
-    color: var(--gold);
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-decoration: none;
-    margin-top: 16px;
-    letter-spacing: 0.5px;
-  }
-  .read-more::after { content: ' →'; }
+/* ============================
+   FEATURED ARTICLES
+============================ */
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+@media(max-width: 900px) { .featured-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 560px) { .featured-grid { grid-template-columns: 1fr; } }
 
-  .article-list { display: flex; flex-direction: column; gap: 20px; }
-  .article-small {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 8px;
-    padding: 20px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    text-decoration: none;
-    color: var(--ink);
-    transition: box-shadow 0.2s, transform 0.15s;
-  }
-  .article-small:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
-  .art-thumb {
-    width: 64px;
-    height: 64px;
-    border-radius: 6px;
-    background: linear-gradient(135deg, var(--soft), var(--cream));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    flex-shrink: 0;
-  }
-  .article-small h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 6px;
-  }
-  .article-small p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.feat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: all .22s;
+}
+.feat-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(26,92,58,.09);
+}
+.feat-card.hero-feat {
+  grid-column: span 2;
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+  padding: 36px;
+}
+@media(max-width: 900px) { .feat-card.hero-feat { grid-column: span 2; } }
+@media(max-width: 560px) { .feat-card.hero-feat { grid-column: span 1; } }
+.feat-card.hero-feat:hover { box-shadow: 0 12px 40px rgba(26,92,58,.3); }
 
-  /* ── AFFILIATE SECTION ── */
-  .affiliate { background: var(--ink); color: var(--paper); }
-  .affiliate .section-title { color: var(--paper); }
-  .affiliate .section-sub { color: #aaa; }
-  .affiliate-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .aff-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 10px;
-    padding: 28px;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  }
-  .aff-card:hover { background: rgba(201,168,76,0.07); border-color: var(--gold); transform: translateY(-4px); }
-  .aff-logo { font-size: 2.5rem; margin-bottom: 16px; display: block; }
-  .aff-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--paper); margin-bottom: 8px; }
-  .aff-card p { font-size: 0.85rem; color: #aaa; line-height: 1.6; margin-bottom: 16px; }
-  .aff-earn { font-size: 0.75rem; font-weight: 600; color: var(--gold); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; display: block; }
-  .btn-aff {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: var(--gold);
-    color: var(--ink);
-    padding: 10px;
-    border-radius: 4px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: background 0.2s;
-  }
-  .btn-aff:hover { background: var(--gold-light); }
-  .aff-disclaimer {
-    text-align: center;
-    font-size: 0.75rem;
-    color: #555;
-    margin-top: 32px;
-    font-style: italic;
-  }
+.feat-tag {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.feat-pill {
+  background: var(--green-light); color: var(--green);
+  font-size: .69rem; font-weight: 800;
+  padding: 3px 10px; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.hero-feat .feat-pill { background: rgba(255,255,255,.2); color: var(--white); }
+.feat-time { font-size: .78rem; color: var(--muted); }
+.hero-feat .feat-time { color: rgba(255,255,255,.6); }
+.feat-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; line-height: 1.3;
+  color: var(--dark); margin-bottom: 10px;
+}
+.hero-feat .feat-title { font-size: 1.4rem; color: var(--white); }
+.feat-desc { font-size: .87rem; color: var(--muted); line-height: 1.58; flex: 1; }
+.hero-feat .feat-desc { color: rgba(255,255,255,.75); font-size: .92rem; }
+.feat-cta {
+  margin-top: 18px; font-size: .83rem; font-weight: 700;
+  color: var(--green); display: flex; align-items: center; gap: 4px;
+  transition: gap .2s;
+}
+.hero-feat .feat-cta { color: var(--accent); }
+.feat-card:hover .feat-cta { gap: 8px; }
 
-  /* ── DIGITAL PRODUCTS ── */
-  .products { background: var(--cream); }
-  .prod-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-  .prod-card {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.25s, transform 0.2s;
-  }
-  .prod-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-5px); }
-  .prod-cover {
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-  }
-  .prod-cover.green { background: linear-gradient(135deg, #2a3d2e, #3d6142); }
-  .prod-cover.gold  { background: linear-gradient(135deg, #7a5a10, #c9a84c); }
-  .prod-cover.dark  { background: linear-gradient(135deg, #1a1a2e, #16213e); }
-  .prod-body { padding: 24px; }
-  .prod-badge {
-    display: inline-block;
-    background: var(--ink);
-    color: var(--gold);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 2px;
-    margin-bottom: 10px;
-  }
-  .prod-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
-  .prod-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-  .prod-footer { display: flex; align-items: center; justify-content: space-between; }
-  .prod-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--ink); }
-  .prod-price span { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--muted); font-weight: 400; text-decoration: line-through; margin-left: 4px; }
-  .btn-buy {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 10px 18px;
-    border-radius: 4px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.82rem;
-    transition: background 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-buy:hover { background: var(--moss); }
+/* ============================
+   TOOLS CTA
+============================ */
+.tools-cta { background: var(--dark); }
+.tools-cta-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 72px 24px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+}
+@media(max-width: 768px) { .tools-cta-inner { grid-template-columns: 1fr; } }
+.tools-text { color: var(--white); }
+.tools-text .section-label { color: var(--accent); }
+.tools-text .section-title { color: var(--white); }
+.tools-text .section-sub { color: rgba(255,255,255,.65); margin-bottom: 32px; }
+.tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tool-tile {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px; padding: 18px;
+  text-decoration: none; color: var(--white);
+  transition: all .2s;
+}
+.tool-tile:hover { background: rgba(255,255,255,.12); border-color: var(--accent); }
+.tool-tile .tt-icon { font-size: 1.4rem; margin-bottom: 8px; }
+.tool-tile h4 { font-size: .88rem; font-weight: 700; margin-bottom: 4px; }
+.tool-tile p { font-size: .78rem; color: rgba(255,255,255,.55); line-height: 1.4; }
 
-  /* ── NEWSLETTER ── */
-  .newsletter {
-    background: linear-gradient(135deg, var(--gold) 0%, #a07830 100%);
-    color: var(--ink);
-    text-align: center;
-  }
-  .newsletter .section-title { color: var(--ink); font-size: 2.2rem; }
-  .newsletter p { max-width: 480px; margin: 0 auto 32px; font-size: 1rem; line-height: 1.65; color: rgba(0,0,0,0.7); }
-  .newsletter-form {
-    display: flex;
-    max-width: 460px;
-    margin: 0 auto;
-    gap: 0;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  }
-  .newsletter-form input {
-    flex: 1;
-    padding: 16px 20px;
-    border: none;
-    font-size: 0.95rem;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    background: white;
-  }
-  .newsletter-form button {
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    padding: 16px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-  .newsletter-form button:hover { background: var(--moss); }
-  .nl-perks {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-top: 24px;
-    font-size: 0.8rem;
-    color: rgba(0,0,0,0.6);
-    flex-wrap: wrap;
-  }
-  .nl-perk::before { content: '✓ '; font-weight: 700; }
+/* ============================
+   DEBT-FREE SPOTLIGHT
+============================ */
+.spotlight { background: var(--bg); }
+.spotlight-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media(max-width: 640px) { .spotlight-grid { grid-template-columns: 1fr; } }
+.spot-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px;
+  text-decoration: none; color: inherit;
+  display: flex; align-items: start; gap: 16px;
+  transition: all .22s;
+}
+.spot-card:hover { border-color: var(--green); box-shadow: 0 6px 20px rgba(26,92,58,.08); }
+.spot-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; color: var(--border);
+  font-weight: 700; line-height: 1; flex-shrink: 0;
+  transition: color .22s;
+}
+.spot-card:hover .spot-num { color: var(--green-light); }
+.spot-body {}
+.spot-tag { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--green); margin-bottom: 6px; }
+.spot-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); line-height: 1.3; margin-bottom: 6px; }
+.spot-time { font-size: .78rem; color: var(--muted); }
 
-  /* ── AD ZONE ── */
-  .full-width-ad {
-    background: white;
-    border: 2px dashed var(--soft);
-    border-radius: 8px;
-    padding: 32px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.82rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 32px 0;
-  }
-  .full-width-ad strong { display: block; font-size: 1.1rem; color: var(--ink); margin-bottom: 4px; text-transform: none; letter-spacing: 0; }
+/* ============================
+   NEWSLETTER
+============================ */
+.newsletter-section {
+  background: var(--green);
+  padding: 72px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.newsletter-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(244,200,67,.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.newsletter-section .section-title { color: var(--white); position: relative; }
+.newsletter-section .section-sub { color: rgba(255,255,255,.72); margin: 0 auto 36px; position: relative; }
+.nl-form {
+  display: flex; gap: 10px; justify-content: center;
+  flex-wrap: wrap; max-width: 500px; margin: 0 auto;
+  position: relative;
+}
+.nl-form input {
+  flex: 1; min-width: 220px;
+  padding: 14px 18px; border: 1px solid rgba(255,255,255,.25);
+  border-radius: 8px; background: rgba(255,255,255,.1);
+  color: var(--white); font-family: 'DM Sans', sans-serif; font-size: .95rem;
+  outline: none;
+}
+.nl-form input::placeholder { color: rgba(255,255,255,.45); }
+.nl-form input:focus { border-color: var(--accent); }
+.nl-form button {
+  background: var(--accent); color: var(--dark);
+  padding: 14px 26px; border: none; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-weight: 800;
+  font-size: .95rem; cursor: pointer; transition: opacity .2s;
+  white-space: nowrap;
+}
+.nl-form button:hover { opacity: .88; }
+.nl-note { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 14px; position: relative; }
 
-  /* ── HOW IT EARNS ── */
-  .how-it-earns { background: white; }
-  .earn-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-  .earn-card {
-    padding: 28px 20px;
-    border-left: 3px solid var(--gold);
-    background: var(--cream);
-    border-radius: 0 8px 8px 0;
-  }
-  .earn-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); margin-bottom: 8px; }
-  .earn-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-  .earn-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink);
-    color: #888;
-    padding: 48px 24px 24px;
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-  }
-  .footer-brand .logo { display: block; margin-bottom: 12px; }
-  .footer-brand p { font-size: 0.82rem; line-height: 1.65; max-width: 260px; }
-  footer h4 { font-family: 'Playfair Display', serif; color: var(--paper); font-size: 0.95rem; margin-bottom: 16px; }
-  footer ul { list-style: none; }
-  footer ul li { margin-bottom: 8px; }
-  footer ul li a { color: #888; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
-  footer ul li a:hover { color: var(--gold); }
-  .footer-bottom {
-    border-top: 1px solid #222;
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .footer-bottom a { color: #666; text-decoration: none; }
-  .footer-bottom a:hover { color: var(--gold); }
-
-  /* ── SETUP GUIDE ── */
-  .setup-guide {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: var(--ink);
-    color: white;
-    border: 2px solid var(--gold);
-    border-radius: 12px;
-    padding: 20px 24px;
-    max-width: 300px;
-    font-size: 0.82rem;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-    z-index: 999;
-    animation: fadeUp 0.5s 1s ease both;
-  }
-  .setup-guide h4 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 10px; font-size: 1rem; }
-  .setup-guide ol { padding-left: 16px; }
-  .setup-guide ol li { margin-bottom: 6px; line-height: 1.5; }
-  .setup-guide ol li a { color: var(--gold); }
-  .setup-close {
-    position: absolute;
-    top: 10px; right: 14px;
-    background: none; border: none;
-    color: #666; font-size: 1rem;
-    cursor: pointer;
-  }
-  .setup-close:hover { color: white; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .hero-inner, .articles-grid, .footer-grid { grid-template-columns: 1fr; }
-    .cat-grid, .affiliate-grid, .prod-grid, .earn-grid { grid-template-columns: repeat(2, 1fr); }
-    nav { display: none; }
-    .hero::before { display: none; }
-  }
-  @media (max-width: 540px) {
-    .cat-grid, .affiliate-grid, .prod-grid, .earn-grid { grid-template-columns: 1fr; }
-  }
+/* ============================
+   FOOTER
+============================ */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,.55);
+  padding: 56px 24px 32px;
+}
+.footer-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+@media(max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+.footer-brand .f-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 900; color: var(--white);
+  text-decoration: none; display: block; margin-bottom: 14px;
+}
+.footer-brand .f-logo span { color: var(--accent); }
+.footer-brand p { font-size: .85rem; line-height: 1.7; max-width: 260px; margin-bottom: 20px; }
+.footer-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  padding: 6px 12px; border-radius: 8px; font-size: .78rem; color: rgba(255,255,255,.5);
+}
+.footer-col h4 {
+  font-size: .72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em; color: rgba(255,255,255,.35); margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  color: rgba(255,255,255,.55); text-decoration: none;
+  font-size: .88rem; transition: color .2s;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px; font-size: .8rem;
+}
+.footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+.footer-bottom a:hover { color: var(--white); }
+.legal-links { display: flex; gap: 20px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
 
-<!-- AD STRIP -->
-<div class="ad-banner">
-  💡 <strong>Sponsored:</strong> Earn up to 5.1% APY with a High-Yield Savings Account — <a href="https://ally.com" target="_blank" rel="noopener">Open yours free today →</a>
-</div>
-
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
+<!-- ========================
+     NAV
+======================== -->
+<nav>
+  <div class="nav-inner">
     <a class="logo" href="index.html">Wealth<span>Wise</span></a>
-    <nav>
-      <a href="investing.html">Investing</a>
-      <a href="debt-free.html">Debt-Free</a>
-      <a href="resources.html">Tools</a>
-      <a href="all-reads.html">All Reads</a>
-      <a href="#newsletter" class="cta-nav">Free Newsletter</a>
-    </nav>
+    <ul class="nav-links">
+      <li><a href="investing.html">Investing</a></li>
+      <li><a href="debt-free.html">Debt-Free</a></li>
+      <li><a href="resources.html">Tools</a></li>
+      <li><a href="all-reads.html">All Reads</a></li>
+      <li><a href="about.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<!-- HERO -->
-<section class="hero" style="padding:80px 24px 60px;">
+
+<!-- ========================
+     HERO
+======================== -->
+<section class="hero">
   <div class="hero-inner">
-    <div>
-      <span class="hero-tag">Est. 2025 · Personal Finance</span>
-      <h1>Build Wealth.<br/><em>On Your Terms.</em></h1>
-      <p>No-fluff strategies for saving more, investing smarter, and building passive income streams that actually work.</p>
-      <div class="hero-btns">
-        <a href="all-reads.html" class="btn-primary">Browse All 50 Guides</a>
-        <a href="resources.html" class="btn-secondary">Free Tools</a>
+    <div class="hero-text">
+      <div class="hero-eyebrow">🇳🇬 Built for Nigerians</div>
+      <h1 class="hero-h1">
+        Take control of<br>
+        your money.<br>
+        <em>For real this time.</em>
+      </h1>
+      <p class="hero-sub">
+        Free, jargon-free personal finance education — investing, debt payoff, real estate, and retirement — written specifically for the Nigerian context.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="all-reads.html">Browse 50 Free Guides →</a>
+        <a class="btn-secondary" href="resources.html">Open Calculators</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-box"><span class="num">48K+</span><span class="label">Monthly Readers</span></div>
-      <div class="stat-box"><span class="num">120+</span><span class="label">Free Guides</span></div>
-      <div class="stat-box"><span class="num">$4.2B</span><span class="label">Tracked by Readers</span></div>
-      <div class="stat-box"><span class="num">8 yrs</span><span class="label">Of Expertise</span></div>
-      <div class="stat-box"><span class="num">100%</span><span class="label">Independent</span></div>
-      <div class="stat-box"><span class="num">Zero</span><span class="label">Hidden Fees</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="categories">
-  <div class="section-inner">
-    <div class="section-label">Explore Topics</div>
-    <div class="section-title">What Do You Want to Master?</div>
-    <div class="cat-grid">
-      <a class="cat-card" href="investing.html">
-        <span class="cat-icon">📈</span>
-        <h3>Investing</h3>
-        <p>Stocks, ETFs, index funds and building long-term wealth.</p>
-      </a>
-      <a class="cat-card" href="debt-free.html">
-        <span class="cat-icon">💳</span>
-        <h3>Debt-Free</h3>
-        <p>Pay off debt faster with proven avalanche & snowball strategies.</p>
-      </a>
-      <a class="cat-card" href="real-estate.html">
-        <span class="cat-icon">🏡</span>
-        <h3>Real Estate</h3>
-        <p>REITs, rental property, and house hacking basics.</p>
-      </a>
-      <a class="cat-card" href="retirement.html">
-        <span class="cat-icon">🔒</span>
-        <h3>Retirement</h3>
-        <p>401k, IRA, Roth, and FIRE — retire on your schedule.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ARTICLES -->
-<section id="articles">
-  <div class="section-inner">
-    <div class="section-label">Latest Articles</div>
-    <div class="section-title">Fresh Off the Press</div>
-    <p class="section-sub" style="margin-bottom:16px;">50 free guides across investing, debt, real estate, and retirement.</p>
-    <a href="all-reads.html" style="display:inline-block;margin-bottom:40px;font-size:0.8rem;font-weight:700;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,0.4);padding:7px 18px;border-radius:3px;transition:all 0.2s;">Browse All 50 Guides →</a>
-    <div class="articles-grid">
-
-      <a class="article-featured" href="article-dividend-portfolio.html">
-        <div class="art-img">💰</div>
-        <div class="art-body">
-          <span class="article-tag">Investing</span>
-          <h2>How to Build a $1,000/Month Dividend Portfolio From Scratch</h2>
-          <p>The exact blueprint — stocks, timeline, and reinvestment math — starting with just $500 today.</p>
-          <div class="art-meta"><strong>12 min read</strong> · February 2025</div>
-          <span class="read-more">Read Full Guide</span>
-        </div>
-      </a>
-
-      <div class="article-list">
-        <a class="article-small" href="all-reads.html#sec-debt">
-          <div class="art-thumb">❄️</div>
-          <div>
-            <span class="article-tag" style="font-size:0.65rem;padding:2px 7px;">Debt-Free</span>
-            <h3>Debt Snowball vs Avalanche: Which Pays Off Debt Faster?</h3>
-            <p>We ran the numbers on both strategies. Here is the definitive answer.</p>
-          </div>
-        </a>
-        <a class="article-small" href="all-reads.html#sec-real">
-          <div class="art-thumb">🏘️</div>
-          <div>
-            <span class="article-tag" style="font-size:0.65rem;padding:2px 7px;">Real Estate</span>
-            <h3>REITs Explained: Invest in Real Estate With Just $10</h3>
-            <p>No mortgage, no tenants, no maintenance. Own real estate for $10.</p>
-          </div>
-        </a>
-        <a class="article-small" href="all-reads.html#sec-retire">
-          <div class="art-thumb">🔥</div>
-          <div>
-            <span class="article-tag" style="font-size:0.65rem;padding:2px 7px;">Retirement</span>
-            <h3>What Is FIRE? Financial Independence, Retire Early Explained</h3>
-            <p>The movement, the math, and whether it is achievable for normal people.</p>
-          </div>
-        </a>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-card c1">
+        <div class="hc-label">Debt payoff</div>
+        <div class="hc-value">36 mo</div>
+        <div class="hc-sub">to eliminate ₦1.2M debt</div>
+        <div class="hc-badge">↓ Interest saved: ₦340K</div>
       </div>
-
+      <div class="hero-card c2">
+        <div class="hc-tag">📈 Investing Guide</div>
+        <div class="hc-title">How to Start Investing With Just ₦10,000 Today</div>
+      </div>
+      <div class="hero-card c3">
+        <div class="hc-label">Emergency Fund</div>
+        <div class="hc-value">₦450K</div>
+        <div class="hc-sub">6 months coverage</div>
+        <div class="hc-badge">✅ Goal reached</div>
+      </div>
     </div>
-    <div style="text-align:center;margin-top:36px;">
-      <a href="all-reads.html" style="display:inline-block;background:var(--ink);color:var(--paper);padding:14px 32px;border-radius:4px;font-weight:700;text-decoration:none;font-size:0.92rem;transition:background 0.2s;">See All 50 Articles →</a>
+  </div>
+  <div class="hero-strip">
+    <div class="hero-strip-inner">
+      <div class="strip-item"><span class="dot"></span>50 Free Guides</div>
+      <div class="strip-item"><span class="dot"></span>No Jargon</div>
+      <div class="strip-item"><span class="dot"></span>Clear Action Steps</div>
+      <div class="strip-item"><span class="dot"></span>Free Financial Calculators</div>
+      <div class="strip-item"><span class="dot"></span>Nigeria-Specific Content</div>
+      <div class="strip-item"><span class="dot"></span>No Signup Required</div>
     </div>
   </div>
 </section>
 
-<!-- DISPLAY AD ZONE -->
-<div class="section-inner" style="padding: 0 24px;">
-  <div class="full-width-ad">
-    <strong>📢 Display Ad Placement</strong>
-    Paste your Google AdSense leaderboard code here
+
+<!-- ========================
+     TRUST BAR
+======================== -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="ti-icon">📖</span><span><strong>50+</strong> Free Guides</span></div>
+    <div class="trust-item"><span class="ti-icon">🛠</span><span><strong>4</strong> Free Calculators</span></div>
+    <div class="trust-item"><span class="ti-icon">🇳🇬</span><span><strong>Nigeria-first</strong> content</span></div>
+    <div class="trust-item"><span class="ti-icon">🔒</span><span><strong>No paywall,</strong> ever</span></div>
+    <div class="trust-item"><span class="ti-icon">✅</span><span><strong>Clear action steps</strong> in every guide</span></div>
   </div>
 </div>
 
-<!-- AFFILIATE PICKS -->
-<section class="affiliate" id="affiliate">
-  <div class="section-inner">
-    <div class="section-label" style="color:var(--gold);">Recommended Tools</div>
-    <div class="section-title">Products We Trust & Earn From</div>
-    <p class="section-sub">Every recommendation is one we'd use ourselves. We earn a commission at no extra cost to you — this keeps WealthWise free.</p>
-    <div class="affiliate-grid">
-      <div class="aff-card">
-        <span class="aff-logo">💼</span>
-        <h3>M1 Finance</h3>
-        <p>Commission-free automated investing. Build a custom portfolio and let it rebalance itself.</p>
-        <span class="aff-earn">You earn: $30–$50 per signup</span>
-        <!-- ✅ LINKED: Goes to M1 Finance review page -->
-        <a href="review-m1-finance.html" class="btn-aff">Open Free Account →</a>
-      </div>
-      <div class="aff-card">
-        <span class="aff-logo">📱</span>
-        <h3>Acorns</h3>
-        <p>Round up spare change and invest automatically. Perfect for beginners building the habit.</p>
-        <span class="aff-earn">You earn: $10 per referral</span>
-        <!-- ✅ LINKED: Goes to Acorns review page -->
-        <a href="review-acorns.html" class="btn-aff">Get Started Free →</a>
-      </div>
-      <div class="aff-card">
-        <span class="aff-logo">🏦</span>
-        <h3>Ally Bank</h3>
-        <p>High-yield savings with 4.25% APY, no fees, and a top-rated mobile app.</p>
-        <span class="aff-earn">You earn: $20 per account opened</span>
-        <!-- ✅ LINKED: Goes to Ally Bank review page -->
-        <a href="review-ally-bank.html" class="btn-aff">Earn More Interest →</a>
-      </div>
-    </div>
-    <p class="aff-disclaimer">* Affiliate disclosure: We may earn compensation when you sign up through our links. We only recommend products we believe in. <a href="about.html#disclosure" style="color:#666;">Read full disclosure →</a></p>
-  </div>
-</section>
 
-<!-- DIGITAL PRODUCTS -->
-<section class="products" id="products">
+<!-- ========================
+     CATEGORIES
+======================== -->
+<section class="section categories">
   <div class="section-inner">
-    <div class="section-label">Digital Downloads</div>
-    <div class="section-title">Tools Built for Your Wallet</div>
-    <p class="section-sub">Instant downloads. No subscriptions. Built by financial nerds obsessed with spreadsheets.</p>
-    <div class="prod-grid">
-      <div class="prod-card">
-        <div class="prod-cover green">📒</div>
-        <div class="prod-body">
-          <span class="prod-badge">E-Book</span>
-          <h3>The Beginner's Guide to Index Fund Investing</h3>
-          <p>47 pages covering everything from opening your first brokerage to building a diversified portfolio.</p>
-          <div class="prod-footer">
-            <div class="prod-price">$17 <span>$34</span></div>
-            <!-- ✅ REPLACE href with your Gumroad product link -->
-            <a href="#" class="btn-buy" target="_blank" rel="noopener">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-cover gold">📊</div>
-        <div class="prod-body">
-          <span class="prod-badge">Template</span>
-          <h3>Ultimate Budget & Net Worth Tracker (Google Sheets)</h3>
-          <p>Track income, expenses, savings rate, investments, and net worth — all in one beautiful sheet.</p>
-          <div class="prod-footer">
-            <div class="prod-price">$12 <span>$25</span></div>
-            <!-- ✅ REPLACE href with your Gumroad product link -->
-            <a href="#" class="btn-buy" target="_blank" rel="noopener">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-cover dark">🎯</div>
-        <div class="prod-body">
-          <span class="prod-badge">Workbook</span>
-          <h3>Zero to $10K: A 90-Day Savings Challenge Workbook</h3>
-          <p>Daily prompts, habit trackers, and weekly milestones to build serious savings momentum.</p>
-          <div class="prod-footer">
-            <div class="prod-price">$27 <span>$49</span></div>
-            <!-- ✅ REPLACE href with your Gumroad product link -->
-            <a href="#" class="btn-buy" target="_blank" rel="noopener">Buy Now</a>
-          </div>
-        </div>
-      </div>
+    <div class="section-label">What We Cover</div>
+    <h2 class="section-title">Everything You Need to Build Wealth</h2>
+    <p class="section-sub">Four complete content pillars — 50 guides total. Start anywhere, but start today. <a href="all-reads.html">See all 50 guides →</a></p>
+    <div class="cat-strip">
+      <a class="cat-tile" href="investing.html">
+        <div class="tile-icon">📈</div>
+        <div class="tile-count">14 Guides</div>
+        <h3>Investing</h3>
+        <p>NGX stocks, ETFs, dividends, index funds, mutual funds, and how to start with what you have.</p>
+        <div class="tile-cta">Explore Investing →</div>
+      </a>
+      <a class="cat-tile" href="debt-free.html">
+        <div class="tile-icon">💳</div>
+        <div class="tile-count">12 Guides</div>
+        <h3>Debt-Free</h3>
+        <p>Credit card payoff, student loans, mortgage strategy, budgeting, and credit score repair.</p>
+        <div class="tile-cta">Eliminate Debt →</div>
+      </a>
+      <a class="cat-tile" href="realestate.html">
+        <div class="tile-icon">🏡</div>
+        <div class="tile-count">12 Guides</div>
+        <h3>Real Estate</h3>
+        <p>REITs, rental property analysis, house hacking, crowdfunding, and building a property portfolio.</p>
+        <div class="tile-cta">Explore Real Estate →</div>
+      </a>
+      <a class="cat-tile" href="retirement.html">
+        <div class="tile-icon">🔒</div>
+        <div class="tile-count">12 Guides</div>
+        <h3>Retirement</h3>
+        <p>The 4% rule, FIRE movement, pension strategy, savings benchmarks by age, and more.</p>
+        <div class="tile-cta">Plan Retirement →</div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter" id="newsletter">
+
+<!-- ========================
+     FEATURED ARTICLES
+======================== -->
+<section class="section" style="background: var(--white);">
   <div class="section-inner">
-    <div class="section-title">The Weekly WealthWise Brief</div>
-    <p>One email every Sunday. One money tip, one tool, one deal — curated so you don't have to search.</p>
-    <!-- ✅ REPLACE action URL with your Mailchimp form action URL -->
-    <form class="newsletter-form" onsubmit="handleSub(event)">
-      <input type="email" placeholder="Your email address" required/>
-      <button type="submit">Subscribe Free</button>
-    </form>
-    <div class="nl-perks">
-      <span class="nl-perk">No spam, ever</span>
-      <span class="nl-perk">Unsubscribe anytime</span>
-      <span class="nl-perk">6,200+ subscribers</span>
+    <div class="section-label">Start Here</div>
+    <h2 class="section-title">Most-Read Guides This Month</h2>
+    <p class="section-sub">The most popular articles across every category. Each one ends with clear action steps you can take today.</p>
+    <div class="featured-grid">
+
+      <a class="feat-card hero-feat" href="debt-snowball-vs-avalanche.html">
+        <div class="feat-tag"><span class="feat-pill">❄️ Strategy</span><span class="feat-time">⏱ 9 min</span></div>
+        <h3 class="feat-title">Debt Snowball vs Debt Avalanche: Which Pays Off Debt Faster?</h3>
+        <p class="feat-desc">We ran the numbers on both strategies across 5 real debt scenarios. The definitive, data-backed answer — plus how to choose based on your personality.</p>
+        <span class="feat-cta">Read the guide →</span>
+      </a>
+
+      <a class="feat-card" href="investing-dividend-portfolio.html">
+        <div class="feat-tag"><span class="feat-pill">💰 Investing</span><span class="feat-time">⏱ 12 min</span></div>
+        <h3 class="feat-title">How to Build a $1,000/Month Dividend Portfolio From Scratch</h3>
+        <p class="feat-desc">The exact blueprint — stocks, timeline, and reinvestment math — starting with just $500 today.</p>
+        <span class="feat-cta">Read →</span>
+      </a>
+
+      <a class="feat-card" href="debt-credit-score.html">
+        <div class="feat-tag"><span class="feat-pill">📈 Credit Score</span><span class="feat-time">⏱ 8 min</span></div>
+        <h3 class="feat-title">How to Raise Your Credit Score by 100 Points in 6 Months</h3>
+        <p class="feat-desc">The specific actions — in order of impact — that move your score fastest without any gimmicks.</p>
+        <span class="feat-cta">Read →</span>
+      </a>
+
+      <a class="feat-card" href="debt-zero-based-budget.html">
+        <div class="feat-tag"><span class="feat-pill">📊 Budgeting</span><span class="feat-time">⏱ 10 min</span></div>
+        <h3 class="feat-title">Zero-Based Budgeting: Give Every Naira a Job</h3>
+        <p class="feat-desc">The complete guide to the method that helped users eliminate millions in debt. Clear, practical, works on any income.</p>
+        <span class="feat-cta">Read →</span>
+      </a>
+
+      <a class="feat-card" href="retirement-4-percent-rule.html">
+        <div class="feat-tag"><span class="feat-pill">🔒 Retirement</span><span class="feat-time">⏱ 8 min</span></div>
+        <h3 class="feat-title">The 4% Rule: How to Calculate Your Retirement Number Today</h3>
+        <p class="feat-desc">Multiply your annual expenses by 25. That's your number. Here's the full math behind it.</p>
+        <span class="feat-cta">Read →</span>
+      </a>
+
+      <a class="feat-card" href="debt-negotiate-interest.html">
+        <div class="feat-tag"><span class="feat-pill">🤝 Quick Win</span><span class="feat-time">⏱ 6 min</span></div>
+        <h3 class="feat-title">How to Negotiate Lower Interest Rates (Script Included)</h3>
+        <p class="feat-desc">One 10-minute phone call using this exact script can save you thousands. Most people never ask.</p>
+        <span class="feat-cta">Read →</span>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- HOW IT EARNS -->
-<section class="how-it-earns">
-  <div class="section-inner">
-    <div class="section-label">Site Monetization</div>
-    <div class="section-title" style="margin-bottom:36px;">Your 4 Income Streams</div>
-    <div class="earn-grid">
-      <div class="earn-card">
-        <div class="earn-num">01</div>
-        <h4>Display Ads</h4>
-        <p>Apply to Google AdSense (free) or Mediavine (50K+ sessions). Earn $5–$30 per 1,000 page views automatically.</p>
-      </div>
-      <div class="earn-card">
-        <div class="earn-num">02</div>
-        <h4>Affiliate Links</h4>
-        <p>Join free programs: Amazon, M1 Finance, Acorns, Ally. Earn $10–$150 every time a reader signs up.</p>
-      </div>
-      <div class="earn-card">
-        <div class="earn-num">03</div>
-        <h4>Digital Products</h4>
-        <p>Sell e-books, templates & workbooks via Gumroad (free). Keep 90%+ of every sale — no inventory needed.</p>
-      </div>
-      <div class="earn-card">
-        <div class="earn-num">04</div>
-        <h4>Email List</h4>
-        <p>A 5,000-subscriber list can earn $2,500–$10,000/month through sponsored issues and product promotions.</p>
-      </div>
+
+<!-- ========================
+     TOOLS CTA
+======================== -->
+<section class="tools-cta">
+  <div class="tools-cta-inner">
+    <div class="tools-text">
+      <div class="section-label">Free Tools</div>
+      <h2 class="section-title">Stop Guessing.<br>Calculate It.</h2>
+      <p class="section-sub">Four free financial calculators built for Nigerian finances. No signup. No export limitations. Just clear answers.</p>
+      <a class="btn-primary" href="resources.html">Open Free Calculators →</a>
+    </div>
+    <div class="tools-grid">
+      <a class="tool-tile" href="resources.html">
+        <div class="tt-icon">💳</div>
+        <h4>Debt Payoff Calculator</h4>
+        <p>See your debt-free date & interest saved</p>
+      </a>
+      <a class="tool-tile" href="resources.html">
+        <div class="tt-icon">📊</div>
+        <h4>Budget Planner</h4>
+        <p>Zero-based budget in minutes</p>
+      </a>
+      <a class="tool-tile" href="resources.html">
+        <div class="tt-icon">🎯</div>
+        <h4>Savings Goal Planner</h4>
+        <p>Timeline to hit any savings target</p>
+      </a>
+      <a class="tool-tile" href="resources.html">
+        <div class="tt-icon">📈</div>
+        <h4>Investment Return</h4>
+        <p>Compound growth projections</p>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+
+<!-- ========================
+     DEBT SPOTLIGHT
+======================== -->
+<section class="section spotlight">
+  <div class="section-inner">
+    <div class="section-label">💳 Debt-Free Series</div>
+    <h2 class="section-title">12 Guides to Get Out of Debt Fast</h2>
+    <p class="section-sub">The complete WealthWise debt payoff series — from choosing a strategy to staying debt-free forever. <a href="debt-free.html">See all 12 guides →</a></p>
+    <div class="spotlight-grid">
+      <a class="spot-card" href="debt-snowball-vs-avalanche.html"><div class="spot-num">01</div><div class="spot-body"><div class="spot-tag">❄️ Strategy</div><div class="spot-title">Debt Snowball vs Debt Avalanche: Which Pays Off Debt Faster?</div><div class="spot-time">⏱ 9 min</div></div></a>
+      <a class="spot-card" href="debt-credit-card-10k.html"><div class="spot-num">02</div><div class="spot-body"><div class="spot-tag">💳 Credit Cards</div><div class="spot-title">How to Pay Off $10,000 in Credit Card Debt in 12 Months</div><div class="spot-time">⏱ 11 min</div></div></a>
+      <a class="spot-card" href="debt-emergency-fund.html"><div class="spot-num">03</div><div class="spot-body"><div class="spot-tag">🧊 Emergency Fund</div><div class="spot-title">Emergency Fund 101: How Much to Save and Where to Keep It</div><div class="spot-time">⏱ 7 min</div></div></a>
+      <a class="spot-card" href="debt-zero-based-budget.html"><div class="spot-num">04</div><div class="spot-body"><div class="spot-tag">📊 Budget</div><div class="spot-title">Zero-Based Budgeting: Give Every Dollar a Job</div><div class="spot-time">⏱ 10 min</div></div></a>
+      <a class="spot-card" href="debt-credit-score.html"><div class="spot-num">05</div><div class="spot-body"><div class="spot-tag">📈 Credit Score</div><div class="spot-title">How to Raise Your Credit Score by 100 Points in 6 Months</div><div class="spot-time">⏱ 8 min</div></div></a>
+      <a class="spot-card" href="debt-balance-transfer.html"><div class="spot-num">06</div><div class="spot-body"><div class="spot-tag">🔁 Balance Transfer</div><div class="spot-title">0% APR Balance Transfer Cards: How to Use Them Safely</div><div class="spot-time">⏱ 9 min</div></div></a>
+      <a class="spot-card" href="debt-cutting-costs.html"><div class="spot-num">07</div><div class="spot-body"><div class="spot-tag">✂️ Cut Costs</div><div class="spot-title">50 Expenses You Can Cut to Free Up $500/Month</div><div class="spot-time">⏱ 8 min</div></div></a>
+      <a class="spot-card" href="debt-negotiate-interest.html"><div class="spot-num">08</div><div class="spot-body"><div class="spot-tag">🤝 Negotiation</div><div class="spot-title">How to Negotiate Lower Interest Rates (Script Included)</div><div class="spot-time">⏱ 6 min</div></div></a>
+      <a class="spot-card" href="debt-student-loans.html"><div class="spot-num">09</div><div class="spot-body"><div class="spot-tag">🎓 Student Loans</div><div class="spot-title">Student Loan Strategies: Forgiveness, Refinancing & Paydown</div><div class="spot-time">⏱ 13 min</div></div></a>
+      <a class="spot-card" href="debt-mortgage-payoff.html"><div class="spot-num">10</div><div class="spot-body"><div class="spot-tag">🏠 Mortgage</div><div class="spot-title">Should You Pay Off Your Mortgage Early or Invest Instead?</div><div class="spot-time">⏱ 12 min</div></div></a>
+      <a class="spot-card" href="debt-free-3-years.html"><div class="spot-num">11</div><div class="spot-body"><div class="spot-tag">📅 Timeline</div><div class="spot-title">Debt-Free in 3 Years: Paying Off $30,000</div><div class="spot-time">⏱ 11 min</div></div></a>
+      <a class="spot-card" href="debt-stay-debt-free.html"><div class="spot-num">12</div><div class="spot-body"><div class="spot-tag">🔒 Prevention</div><div class="spot-title">How to Stay Debt-Free Forever After Paying It All Off</div><div class="spot-time">⏱ 7 min</div></div></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     NEWSLETTER
+======================== -->
+<section class="newsletter-section">
+  <div class="section-label" style="color:var(--accent);margin-bottom:8px;">Stay Sharp</div>
+  <h2 class="section-title">Get New Guides Every Week</h2>
+  <p class="section-sub">2–3 articles per week. Nigeria-specific finance tips. No spam. Unsubscribe anytime.</p>
+  <form class="nl-form" onsubmit="handleNL(event)">
+    <input type="email" placeholder="your@email.com" required aria-label="Email address">
+    <button type="submit">Subscribe Free →</button>
+  </form>
+  <p class="nl-note">Free forever. No credit card. Unsubscribe with one click.</p>
+</section>
+
+
+<!-- ========================
+     FOOTER
+======================== -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <!-- ✅ LINKED: Logo goes back to homepage -->
-        <a class="logo" href="index.html">Wealth<span style="color:var(--gold)">Wise</span></a>
-        <p>Honest, independent personal finance content for people who want to build real wealth — not just read about it. Based in Nigeria 🇳🇬</p>
-      </div>
-      <div>
-        <h4>Topics</h4>
-        <ul>
-          <!-- ✅ LINKED -->
-          <li><a href="article-dividend-portfolio.html">Investing</a></li>
-          <!-- ✅ Coming soon — replace # when pages are built -->
-          <li><a href="#">Budgeting</a></li>
-          <li><a href="#">Side Hustles</a></li>
-          <li><a href="#">Retirement</a></li>
-          <li><a href="#">Real Estate</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <!-- ✅ LINKED -->
-          <li><a href="resources.html">Free Templates</a></li>
-          <li><a href="resources.html">Calculators</a></li>
-          <li><a href="resources.html">Best Of Lists</a></li>
-          <!-- ✅ Coming soon -->
-          <li><a href="#">Glossary</a></li>
-          <!-- ✅ LINKED: Scrolls to newsletter on this page -->
-          <li><a href="#newsletter">Newsletter</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <!-- ✅ LINKED -->
-          <li><a href="about.html">About</a></li>
-          <li><a href="about.html#contact">Advertise</a></li>
-          <li><a href="about.html#disclosure">Affiliate Disclosure</a></li>
-          <!-- ✅ Coming soon — build privacy policy page -->
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="about.html#contact">Contact</a></li>
-        </ul>
-      </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="f-logo" href="index.html">Wealth<span>Wise</span></a>
+      <p>Free personal finance education for Nigerians. 50 guides across investing, debt payoff, real estate, and retirement. No paywall, ever.</p>
+      <div class="footer-badge">🇳🇬 Based in Nigeria</div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 WealthWise. All rights reserved.</span>
-      <span>
-        <!-- ✅ LINKED -->
-        <a href="#">Privacy</a> ·
-        <a href="#">Terms</a> ·
-        <a href="about.html#disclosure">Disclosure</a>
-      </span>
+    <div class="footer-col">
+      <h4>Guides</h4>
+      <ul>
+        <li><a href="investing.html">Investing</a></li>
+        <li><a href="debt-free.html">Debt-Free</a></li>
+        <li><a href="realestate.html">Real Estate</a></li>
+        <li><a href="retirement.html">Retirement</a></li>
+        <li><a href="all-reads.html">All 50 Reads</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Free Tools</h4>
+      <ul>
+        <li><a href="resources.html">Debt Calculator</a></li>
+        <li><a href="resources.html">Budget Planner</a></li>
+        <li><a href="resources.html">Savings Goal</a></li>
+        <li><a href="resources.html">Investment Return</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#contact">Contact</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WealthWise. All rights reserved. Content is for educational purposes only. <a href="disclaimer.html">Not financial advice.</a></span>
+    <div class="legal-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="affiliate-disclosure.html">Disclosure</a>
     </div>
   </div>
 </footer>
 
-<!-- SETUP GUIDE WIDGET -->
-<div class="setup-guide" id="setupGuide">
-  <button class="setup-close" onclick="document.getElementById('setupGuide').remove()">✕</button>
-  <h4>🚀 Deploy & Start Earning</h4>
-  <ol>
-    <li>Host FREE on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> — no limits!</li>
-    <li>Or test instantly on <a href="https://tiiny.host" target="_blank">Tiiny.host</a> — no signup</li>
-    <li>Apply to <a href="https://adsense.google.com" target="_blank">Google AdSense</a> for ads</li>
-    <li>Join <a href="https://gumroad.com" target="_blank">Gumroad</a> to sell your products</li>
-    <li>Set up email at <a href="https://mailchimp.com" target="_blank">Mailchimp</a> (free)</li>
-  </ol>
-</div>
-
 <script>
-  function handleSub(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ You\'re in!';
-    btn.style.background = '#2a3d2e';
-    e.target.querySelector('input').value = '';
-    setTimeout(() => { btn.textContent = 'Subscribe Free'; btn.style.background = ''; }, 3000);
-  }
-
-  // Smooth scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.style.opacity = 1;
-        el.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.cat-card, .article-small, .aff-card, .prod-card, .earn-card').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s, border-color 0.2s';
-    observer.observe(el);
-  });
+function handleNL(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '✅ You\'re subscribed!';
+  btn.disabled = true;
+  e.target.querySelector('input').value = '';
+  // Wire to MailerLite/Brevo API here
+}
 </script>
+
 </body>
 </html>
