@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>All Reads — WealthWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0d0d0d; --paper: #f7f4ee; --gold: #c9a84c; --gold-light: #f0d98a;
+    --moss: #2a3d2e; --cream: #fdf9f0; --soft: #e8e3d8; --muted: #7a7060; --rule: #d4cfc6;
+    --c-invest: #1a4fd4; --c-debt: #c1341a; --c-real: #1a7a4a; --c-retire: #7a3ad4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);}
+
+  /* HEADER */
+  header{background:var(--ink);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--paper);text-decoration:none;letter-spacing:-0.5px;}
+  .logo span{color:var(--gold);}
+  nav{display:flex;gap:24px;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a:hover,nav a.active{color:var(--gold);}
+  .cta-nav{background:var(--gold)!important;color:var(--ink)!important;padding:7px 16px;border-radius:3px;}
+  @media(max-width:700px){nav{display:none;}}
+
+  /* HERO */
+  .hero{background:var(--ink);padding:60px 24px 52px;position:relative;overflow:hidden;}
+  .hero::before{content:"📚";position:absolute;right:-30px;top:-20px;font-size:18rem;opacity:0.04;pointer-events:none;line-height:1;}
+  .hero-inner{max-width:1200px;margin:0 auto;position:relative;}
+  .hero-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .hero-eyebrow::before{content:"";display:block;width:28px;height:2px;background:var(--gold);}
+  .hero h1{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:white;line-height:1.1;margin-bottom:12px;letter-spacing:-1px;}
+  .hero h1 em{color:var(--gold);font-style:italic;}
+  .hero p{font-size:1rem;color:rgba(255,255,255,0.55);max-width:520px;line-height:1.75;margin-bottom:32px;font-weight:300;}
+  .hero-counts{display:flex;gap:28px;flex-wrap:wrap;}
+  .h-count{border-left:2px solid rgba(201,168,76,0.35);padding-left:14px;}
+  .h-count .n{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:900;line-height:1;}
+  .h-count .l{font-size:0.62rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:3px;}
+  .hc-invest{color:#7aabf0;} .hc-debt{color:#f0907a;} .hc-real{color:#7af0aa;} .hc-retire{color:#c07af0;}
+
+  /* FILTER TABS */
+  .filter-bar{background:white;border-bottom:2px solid var(--ink);position:sticky;top:67px;z-index:90;overflow-x:auto;scrollbar-width:none;}
+  .filter-bar::-webkit-scrollbar{display:none;}
+  .filter-inner{max-width:1200px;margin:0 auto;display:flex;}
+  .filter-btn{flex-shrink:0;padding:15px 22px;font-family:"DM Sans",sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:none;background:none;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+  .filter-btn:hover{color:var(--ink);}
+  .filter-btn.active{color:var(--ink);border-bottom-color:var(--gold);}
+  .filter-count{display:inline-block;background:var(--soft);color:var(--muted);font-size:0.58rem;padding:1px 6px;border-radius:10px;margin-left:5px;}
+  .filter-btn.active .filter-count{background:var(--gold);color:var(--ink);}
+
+  /* MAIN */
+  .main{max-width:1200px;margin:0 auto;padding:56px 24px;}
+
+  /* CATEGORY SECTION */
+  .cat-section{margin-bottom:64px;}
+  .cat-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:14px;border-bottom:3px solid var(--ink);}
+  .cat-header-emoji{font-size:2rem;}
+  .cat-header h2{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;line-height:1;}
+  .cat-header-count{font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-left:auto;}
+  .cat-stripe{width:40px;height:4px;border-radius:2px;margin-bottom:4px;}
+  .stripe-invest{background:var(--c-invest);} .stripe-debt{background:var(--c-debt);}
+  .stripe-real{background:var(--c-real);} .stripe-retire{background:var(--c-retire);}
+
+  /* ARTICLE CARDS */
+  .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){.articles-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.articles-grid{grid-template-columns:1fr;}}
+
+  .art-card{background:white;border:1px solid var(--rule);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;}
+  .art-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+  .art-card:hover .art-read{opacity:1;}
+
+  .art-card-top{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;}
+  .top-invest{background:linear-gradient(135deg,#0d1a3a,#1a3a7a);}
+  .top-debt{background:linear-gradient(135deg,#2e0a0a,#5a1a1a);}
+  .top-real{background:linear-gradient(135deg,#0d2e14,#1a5a28);}
+  .top-retire{background:linear-gradient(135deg,#1a0d2e,#3a1a5a);}
+
+  .art-emoji{font-size:1.7rem;}
+  .art-tag{font-size:0.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);}
+
+  .art-body{padding:18px;flex:1;display:flex;flex-direction:column;}
+  .art-body h3{font-family:"Playfair Display",serif;font-size:0.95rem;font-weight:700;line-height:1.35;margin-bottom:8px;}
+  .art-body p{font-size:0.78rem;color:var(--muted);line-height:1.6;flex:1;margin-bottom:14px;}
+  .art-footer{display:flex;align-items:center;justify-content:space-between;}
+  .art-time{font-size:0.67rem;color:var(--muted);}
+  .art-read{font-size:0.75rem;font-weight:700;opacity:0.5;transition:opacity 0.2s;}
+  .art-read-invest{color:var(--c-invest);} .art-read-debt{color:var(--c-debt);}
+  .art-read-real{color:var(--c-real);} .art-read-retire{color:var(--c-retire);}
+
+  /* AD ZONE */
+  .ad-zone{background:var(--paper);border:2px dashed var(--rule);border-radius:8px;padding:24px;text-align:center;margin:0 0 56px;}
+  .ad-zone strong{display:block;font-size:0.9rem;color:var(--ink);margin-bottom:4px;}
+  .ad-zone p{font-size:0.62rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
+
+  /* BACK TO TOP */
+  .back-top{display:block;text-align:center;margin-bottom:32px;}
+  .back-top a{font-size:0.8rem;color:var(--muted);text-decoration:none;font-weight:600;padding:10px 20px;border:1px solid var(--rule);border-radius:20px;transition:all 0.2s;}
+  .back-top a:hover{background:var(--ink);color:var(--gold);border-color:var(--ink);}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#888;padding:40px 24px 24px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #222;}
+  .footer-logo{font-family:"Playfair Display",serif;font-size:1.3rem;font-weight:900;color:var(--paper);text-decoration:none;}
+  .footer-logo span{color:var(--gold);}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-links a{color:#888;text-decoration:none;font-size:0.78rem;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{font-size:0.72rem;text-align:center;}
+
+  /* FADE */
+  .fade{opacity:0;transform:translateY(16px);transition:opacity 0.45s ease,transform 0.45s ease;}
+  .fade.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">Wealth<span>Wise</span></a>
+    <nav>
+      <a href="investing.html">Investing</a>
+      <a href="debt-free.html">Debt-Free</a>
+      <a href="resources.html">Tools</a>
+      <a href="all-reads.html" class="active">All Reads</a>
+      <a href="about.html#contact" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">WealthWise Library</div>
+    <h1>All Reads — <em>50 Guides</em><br/>Built to Make You Richer</h1>
+    <p>Every article is free, jargon-free, and ends with clear action steps. Browse by category below.</p>
+    <div class="hero-counts">
+      <div class="h-count"><div class="n hc-invest">14</div><div class="l">Investing</div></div>
+      <div class="h-count"><div class="n hc-debt">12</div><div class="l">Debt-Free</div></div>
+      <div class="h-count"><div class="n hc-real">12</div><div class="l">Real Estate</div></div>
+      <div class="h-count"><div class="n hc-retire">12</div><div class="l">Retirement</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="filterCat(this,'all')">All <span class="filter-count">50</span></button>
+    <button class="filter-btn" onclick="filterCat(this,'invest')">📈 Investing <span class="filter-count">14</span></button>
+    <button class="filter-btn" onclick="filterCat(this,'debt')">💳 Debt-Free <span class="filter-count">12</span></button>
+    <button class="filter-btn" onclick="filterCat(this,'real')">🏡 Real Estate <span class="filter-count">12</span></button>
+    <button class="filter-btn" onclick="filterCat(this,'retire')">🔒 Retirement <span class="filter-count">12</span></button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ====== INVESTING ====== -->
+<div class="cat-section" id="sec-invest">
+  <div class="cat-header fade">
+    <div>
+      <div class="cat-stripe stripe-invest"></div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--c-invest);margin-bottom:4px;">Category 01</div>
+    </div>
+    <span class="cat-header-emoji">📈</span>
+    <h2>Investing</h2>
+    <span class="cat-header-count">14 Guides</span>
+  </div>
+  <div class="articles-grid">
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">💰</span><span class="art-tag">Beginner</span></div>
+      <div class="art-body"><h3>How to Build a $1,000/Month Dividend Portfolio From Scratch</h3><p>The exact blueprint — stocks, timeline, and reinvestment math — starting with just $500 today.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">📊</span><span class="art-tag">ETFs</span></div>
+      <div class="art-body"><h3>Index Funds vs ETFs: What's the Difference and Which Should You Buy?</h3><p>A plain-English breakdown of the two most popular passive investing vehicles for beginners.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🎯</span><span class="art-tag">Strategy</span></div>
+      <div class="art-body"><h3>The 3-Fund Portfolio: The Simplest Investing Strategy That Actually Works</h3><p>One bond fund, one US fund, one international fund. Why it beats 90% of active strategies.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">📉</span><span class="art-tag">Psychology</span></div>
+      <div class="art-body"><h3>What to Do When the Stock Market Crashes</h3><p>The counterintuitive moves that separate wealthy investors from panicked ones during downturns.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🪙</span><span class="art-tag">Micro-Invest</span></div>
+      <div class="art-body"><h3>Can Acorns Round-Ups Really Build Wealth? We Ran the Numbers</h3><p>How much does $0.30/day actually add up to over 10, 20, and 30 years? The math is surprising.</p><div class="art-footer"><span class="art-time">⏱ 7 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">📱</span><span class="art-tag">Platform</span></div>
+      <div class="art-body"><h3>M1 Finance Review: The Best Free Investing App for Beginners in 2025</h3><p>Fractional shares, automatic DRIP, zero commissions. Everything a new investor needs in one app.</p><div class="art-footer"><span class="art-time">⏱ 6 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🏆</span><span class="art-tag">Stocks</span></div>
+      <div class="art-body"><h3>7 Dividend Aristocrats That Have Raised Payouts for 25+ Years</h3><p>These companies have increased dividends through recessions, pandemics, and market crashes. Here's why.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🧠</span><span class="art-tag">Mindset</span></div>
+      <div class="art-body"><h3>Dollar-Cost Averaging: Why Investing the Same Amount Every Month Wins</h3><p>The strategy that removes emotion from investing and builds wealth automatically through any market.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">💎</span><span class="art-tag">Advanced</span></div>
+      <div class="art-body"><h3>Growth vs Value Stocks: Which Investment Style Is Right for You?</h3><p>Understand the two dominant investing philosophies and how to combine them for maximum returns.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🔢</span><span class="art-tag">Math</span></div>
+      <div class="art-body"><h3>The Rule of 72: The Mental Math Trick Every Investor Should Know</h3><p>Divide 72 by your expected return. That's how many years to double your money. Use it everywhere.</p><div class="art-footer"><span class="art-time">⏱ 5 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🌍</span><span class="art-tag">Global</span></div>
+      <div class="art-body"><h3>Should You Invest Internationally? The Case for Global Diversification</h3><p>Why putting all your money in US stocks is riskier than most people think and how to fix it.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">💸</span><span class="art-tag">Fees</span></div>
+      <div class="art-body"><h3>How Hidden Investment Fees Are Silently Stealing 25% of Your Retirement</h3><p>A 1% annual fee sounds tiny. Over 30 years on $100,000, it costs you $132,000. Here's how to stop it.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🏦</span><span class="art-tag">Accounts</span></div>
+      <div class="art-body"><h3>Taxable vs Tax-Advantaged Accounts: Where to Put Your Money First</h3><p>The order you invest in matters almost as much as how much you invest. Here's the optimal sequence.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-invest"><span class="art-emoji">🚀</span><span class="art-tag">Start</span></div>
+      <div class="art-body"><h3>How to Start Investing With Just $100: A Complete Beginner's Guide</h3><p>You don't need thousands to start. Here's exactly what to do with your first $100 in the market today.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-invest">Read →</span></div></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- AD -->
+<div class="ad-zone fade">
+  <strong>📢 Google AdSense — Leaderboard 728×90</strong>
+  <p>Paste your AdSense code here</p>
+</div>
+
+<!-- ====== DEBT-FREE ====== -->
+<div class="cat-section" id="sec-debt">
+  <div class="cat-header fade">
+    <div>
+      <div class="cat-stripe stripe-debt"></div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--c-debt);margin-bottom:4px;">Category 02</div>
+    </div>
+    <span class="cat-header-emoji">💳</span>
+    <h2>Debt-Free</h2>
+    <span class="cat-header-count">12 Guides</span>
+  </div>
+  <div class="articles-grid">
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">❄️</span><span class="art-tag">Strategy</span></div>
+      <div class="art-body"><h3>Debt Snowball vs Debt Avalanche: Which Pays Off Debt Faster?</h3><p>We ran the numbers on both strategies across 5 real debt scenarios. Here's the definitive answer.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">💳</span><span class="art-tag">Credit Cards</span></div>
+      <div class="art-body"><h3>How to Pay Off $10,000 in Credit Card Debt in 12 Months</h3><p>A realistic, month-by-month plan for eliminating high-interest credit card debt as fast as possible.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">🎓</span><span class="art-tag">Student Loans</span></div>
+      <div class="art-body"><h3>Student Loan Payoff Strategies: Forgiveness, Refinancing & Aggressive Paydown</h3><p>All your options clearly explained so you can choose the right path for your specific situation.</p><div class="art-footer"><span class="art-time">⏱ 13 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">🏠</span><span class="art-tag">Mortgage</span></div>
+      <div class="art-body"><h3>Should You Pay Off Your Mortgage Early or Invest Instead?</h3><p>The math might surprise you. We break down both scenarios across different interest rate environments.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">📊</span><span class="art-tag">Budget</span></div>
+      <div class="art-body"><h3>Zero-Based Budgeting: Give Every Dollar a Job and Watch Debt Disappear</h3><p>The complete guide to YNAB's budgeting system — the method that helped users eliminate $35M in debt.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">📈</span><span class="art-tag">Credit Score</span></div>
+      <div class="art-body"><h3>How to Raise Your Credit Score by 100 Points in 6 Months</h3><p>The specific actions — in order of impact — that move your score the fastest without any gimmicks.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">🧊</span><span class="art-tag">Emergency Fund</span></div>
+      <div class="art-body"><h3>Emergency Fund 101: How Much to Save and Where to Keep It</h3><p>3 months or 6 months? In a HYSA or checking? We answer every common emergency fund question.</p><div class="art-footer"><span class="art-time">⏱ 7 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">🔁</span><span class="art-tag">Balance Transfer</span></div>
+      <div class="art-body"><h3>0% APR Balance Transfer Cards: How to Use Them Without Getting Burned</h3><p>Transfer your high-interest debt to 0% APR and pay it off interest-free. Here's the right way to do it.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">✂️</span><span class="art-tag">Cutting Costs</span></div>
+      <div class="art-body"><h3>50 Expenses You Can Cut Right Now to Free Up $500/Month for Debt Payoff</h3><p>Most people have at least $200-$500 in expenses they could painlessly eliminate. Here's the list.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">🤝</span><span class="art-tag">Negotiation</span></div>
+      <div class="art-body"><h3>How to Negotiate Lower Interest Rates on Your Credit Cards (Script Included)</h3><p>A single 10-minute phone call using this exact script can save you thousands in interest charges.</p><div class="art-footer"><span class="art-time">⏱ 6 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">📅</span><span class="art-tag">Timeline</span></div>
+      <div class="art-body"><h3>Debt-Free in 3 Years: A Realistic Timeline for Paying Off $30,000</h3><p>The exact monthly breakdown, side hustle targets, and mindset shifts needed to hit this goal.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-debt"><span class="art-emoji">🔒</span><span class="art-tag">Prevention</span></div>
+      <div class="art-body"><h3>How to Stay Debt-Free Forever After Paying It All Off</h3><p>The systems, habits, and rules that prevent people from falling back into debt after becoming debt-free.</p><div class="art-footer"><span class="art-time">⏱ 7 min</span><span class="art-read art-read-debt">Read →</span></div></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- AD -->
+<div class="ad-zone fade">
+  <strong>📢 Google AdSense — Leaderboard 728×90</strong>
+  <p>Paste your AdSense code here</p>
+</div>
+
+<!-- ====== REAL ESTATE ====== -->
+<div class="cat-section" id="sec-real">
+  <div class="cat-header fade">
+    <div>
+      <div class="cat-stripe stripe-real"></div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--c-real);margin-bottom:4px;">Category 03</div>
+    </div>
+    <span class="cat-header-emoji">🏡</span>
+    <h2>Real Estate</h2>
+    <span class="cat-header-count">12 Guides</span>
+  </div>
+  <div class="articles-grid">
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🏘️</span><span class="art-tag">Beginner</span></div>
+      <div class="art-body"><h3>REITs Explained: How to Invest in Real Estate With Just $10</h3><p>Own a share of commercial properties with no mortgage, no tenants, and no maintenance headaches.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🏠</span><span class="art-tag">House Hacking</span></div>
+      <div class="art-body"><h3>House Hacking: How to Live for Free While Building Equity</h3><p>Buy a duplex, live in one unit, rent the other. Your tenants pay your mortgage. This is house hacking.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">📊</span><span class="art-tag">Analysis</span></div>
+      <div class="art-body"><h3>How to Analyze a Rental Property in 10 Minutes</h3><p>Cap rate, cash-on-cash return, the 1% rule — the 4 numbers every real estate investor must know cold.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🌐</span><span class="art-tag">Crowdfunding</span></div>
+      <div class="art-body"><h3>Real Estate Crowdfunding: Fundrise, CrowdStreet & How They Compare</h3><p>Invest in real estate deals passively with as little as $10. We compare the top crowdfunding platforms.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🔑</span><span class="art-tag">First Purchase</span></div>
+      <div class="art-body"><h3>Buying Your First Rental Property: A Complete Step-by-Step Guide</h3><p>From finding deals to financing to managing tenants — everything before you sign anything.</p><div class="art-footer"><span class="art-time">⏱ 15 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">💰</span><span class="art-tag">REITs</span></div>
+      <div class="art-body"><h3>The 5 Best REITs for Monthly Dividend Income in 2025</h3><p>These real estate investment trusts pay monthly dividends with yields between 4% and 8%. Ranked and reviewed.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">📋</span><span class="art-tag">Due Diligence</span></div>
+      <div class="art-body"><h3>10 Questions to Ask Before Buying Any Investment Property</h3><p>Most first-time landlords skip these questions. The answers could save you tens of thousands of dollars.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">📱</span><span class="art-tag">Short-Term</span></div>
+      <div class="art-body"><h3>Airbnb vs Long-Term Rental: Which Makes More Money in 2025?</h3><p>We compare revenue, vacancy risk, management burden, and ROI across 5 different market types.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">📉</span><span class="art-tag">Downturn</span></div>
+      <div class="art-body"><h3>What Happens to Real Estate in a Recession? History and Strategy</h3><p>Real estate doesn't always crash in recessions. Here's what actually happens and how to position yourself.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🏗️</span><span class="art-tag">BRRRR</span></div>
+      <div class="art-body"><h3>The BRRRR Strategy: How Investors Recycle the Same Cash Into Multiple Properties</h3><p>Buy, Rehab, Rent, Refinance, Repeat. How this strategy builds a property portfolio with limited capital.</p><div class="art-footer"><span class="art-time">⏱ 13 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🌎</span><span class="art-tag">Location</span></div>
+      <div class="art-body"><h3>The Best Cities to Buy Rental Property in 2025 (by Cash Flow)</h3><p>Data-driven ranking of the top US markets for rental yield, appreciation, and landlord-friendliness.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-real"><span class="art-emoji">🔧</span><span class="art-tag">Management</span></div>
+      <div class="art-body"><h3>Self-Managing vs Property Manager: The Real Cost Comparison</h3><p>Property managers charge 8-12% of rent. Is it worth it? We do the full math for you here.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-real">Read →</span></div></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- AD -->
+<div class="ad-zone fade">
+  <strong>📢 Google AdSense — Leaderboard 728×90</strong>
+  <p>Paste your AdSense code here</p>
+</div>
+
+<!-- ====== RETIREMENT ====== -->
+<div class="cat-section" id="sec-retire">
+  <div class="cat-header fade">
+    <div>
+      <div class="cat-stripe stripe-retire"></div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--c-retire);margin-bottom:4px;">Category 04</div>
+    </div>
+    <span class="cat-header-emoji">🔒</span>
+    <h2>Retirement</h2>
+    <span class="cat-header-count">12 Guides</span>
+  </div>
+  <div class="articles-grid">
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🏦</span><span class="art-tag">Accounts</span></div>
+      <div class="art-body"><h3>401k vs Roth IRA vs Traditional IRA: Which Account Should You Use?</h3><p>The tax implications of each account can mean hundreds of thousands of dollars over your lifetime.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🔥</span><span class="art-tag">FIRE</span></div>
+      <div class="art-body"><h3>What Is FIRE? Financial Independence, Retire Early Explained for Skeptics</h3><p>The movement, the math, the criticism, and whether it's actually achievable for ordinary people.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🧮</span><span class="art-tag">Math</span></div>
+      <div class="art-body"><h3>The 4% Rule: How to Calculate Your Retirement Number Today</h3><p>Multiply your annual expenses by 25. That's your retirement number. Here's the full math behind it.</p><div class="art-footer"><span class="art-time">⏱ 8 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">⏰</span><span class="art-tag">Benchmarks</span></div>
+      <div class="art-body"><h3>How Much Should You Have Saved for Retirement by Age?</h3><p>The savings benchmarks by decade — and exactly what to do if you're behind. It's never too late.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">📊</span><span class="art-tag">Tools</span></div>
+      <div class="art-body"><h3>Personal Capital Review: The Best Free Retirement Planner Available</h3><p>Monte Carlo simulations, fee analysis, and retirement projections — completely free. Our full review.</p><div class="art-footer"><span class="art-time">⏱ 7 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">💰</span><span class="art-tag">Income</span></div>
+      <div class="art-body"><h3>5 Sources of Retirement Income That Don't Require Selling Stocks</h3><p>Dividends, Social Security, rental income, annuities, and bonds — building a retirement income floor.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🎁</span><span class="art-tag">Match</span></div>
+      <div class="art-body"><h3>How to Maximize Your 401k Employer Match (Free Money You Might Be Leaving)</h3><p>Most employees leave thousands on the table every year by not understanding how matching works.</p><div class="art-footer"><span class="art-time">⏱ 6 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🏖️</span><span class="art-tag">Late Start</span></div>
+      <div class="art-body"><h3>How to Retire Comfortably Even If You're Starting at 45 With Nothing Saved</h3><p>Starting late doesn't mean retiring poor. Here's the aggressive but realistic catch-up strategy.</p><div class="art-footer"><span class="art-time">⏱ 12 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">💊</span><span class="art-tag">Healthcare</span></div>
+      <div class="art-body"><h3>The Biggest Retirement Expense Nobody Talks About: Healthcare Costs</h3><p>The average couple needs $315,000 for healthcare in retirement. Here's how to plan for it now.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🔄</span><span class="art-tag">Roth Conversion</span></div>
+      <div class="art-body"><h3>Roth IRA Conversion: When It Makes Sense and How to Do It</h3><p>Converting a traditional IRA to Roth can save you six figures in taxes if done correctly and at the right time.</p><div class="art-footer"><span class="art-time">⏱ 11 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">📉</span><span class="art-tag">Withdrawal</span></div>
+      <div class="art-body"><h3>Sequence of Returns Risk: The Biggest Threat to Your Retirement Nobody Mentions</h3><p>A market crash in your first year of retirement is catastrophic. Here's how to protect yourself.</p><div class="art-footer"><span class="art-time">⏱ 10 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+    <a class="art-card fade" href="article-dividend-portfolio.html">
+      <div class="art-card-top top-retire"><span class="art-emoji">🗓️</span><span class="art-tag">Social Security</span></div>
+      <div class="art-body"><h3>When to Claim Social Security: Age 62 vs 67 vs 70 — The Math</h3><p>Claiming early gives you more payments but less per month. We run the break-even analysis for you.</p><div class="art-footer"><span class="art-time">⏱ 9 min</span><span class="art-read art-read-retire">Read →</span></div></div>
+    </a>
+
+  </div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Top</a></div>
+
+</div><!-- end .main -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a class="footer-logo" href="index.html">Wealth<span>Wise</span></a>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="all-reads.html">All Reads</a>
+        <a href="resources.html">Tools</a>
+        <a href="about.html">About</a>
+        <a href="about.html#contact">Contact</a>
+        <a href="about.html#disclosure">Disclosure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 WealthWise. All rights reserved. Based in Nigeria 🇳🇬</div>
+  </div>
+</footer>
+
+<script>
+function filterCat(btn, cat) {
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  const sections = {invest:"sec-invest", debt:"sec-debt", real:"sec-real", retire:"sec-retire"};
+  if (cat === "all") {
+    Object.values(sections).forEach(id => document.getElementById(id).style.display = "");
+  } else {
+    Object.entries(sections).forEach(([k,id]) => {
+      document.getElementById(id).style.display = k === cat ? "" : "none";
+    });
+  }
+}
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add("in"); }), {threshold:0.06});
+document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
